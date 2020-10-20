@@ -69,6 +69,8 @@
     "@types/hoist-non-react-statics": "^3.3.1",
     "@types/react-reconciler": "^0.18.0",
     "babel-plugin-import": "^1.13.1",
-    "react-reconciler": "^0.25.1"
+    "classnames": "^2.2.6",
+    "react-reconciler": "^0.25.1",
+    "react-use": "^15.3.4"
   }
 }

@@ -1,0 +1,72 @@
+{
+  "name": "dom-ui-toolbar",
+  "version": "1.0.0",
+  "description": "DOM元素UI工具条",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config config/webpack.dev.config.js",
+    "build": "webpack --config config/webpack.prod.config.js",
+    "pub": "npm run build && npm publish",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PDKSophia/dom-ui-toolbar.git"
+  },
+  "keywords": [
+    "dva",
+    "react",
+    "redux",
+    "model",
+    "hox"
+  ],
+  "author": "彭道宽",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PDKSophia/dom-ui-toolbar/issues"
+  },
+  "homepage": "https://github.com/PDKSophia/dom-ui-toolbar#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.12.1",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@testing-library/jest-dom": "^4.0.0",
+    "@testing-library/react": "^9.3.0",
+    "@types/jest": "^24.0.18",
+    "@types/node": "^10.12.24",
+    "@types/react": "^16.8.0",
+    "@types/react-dom": "^16.8.0",
+    "@types/react-test-renderer": "^16.8.0",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
+    "del": "^5.0.0",
+    "gulp": "^4.0.2",
+    "gulp-typescript": "^5.0.1",
+    "husky": "^3.0.9",
+    "jest": "^24.1.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "prettier": "^1.18.2",
+    "pretty-quick": "^2.0.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-test-renderer": "^16.8.0",
+    "rollup": "^1.21.4",
+    "style-loader": "^1.0.0",
+    "ts-jest": "^24.0.2",
+    "tslint": "^5.18.0",
+    "typescript": "^3.9.7",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.7",
+    "webpack-dev-server": "^3.8.0",
+    "webpack-merge": "^4.2.2"
+  },
+  "dependencies": {
+    "@types/hoist-non-react-statics": "^3.3.1",
+    "@types/react-reconciler": "^0.18.0",
+    "babel-plugin-import": "^1.13.1",
+    "react-reconciler": "^0.25.1"
+  }
+}

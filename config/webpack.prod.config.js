@@ -12,30 +12,6 @@ const prodConfig = {
     libraryTarget: 'umd', // 采用通用模块定义
     libraryExport: 'default', // 兼容 ES6 的模块系统、CommonJS 和 AMD 模块规范
   },
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        include: /node_modules/,
-        loader: 'style-loader!css-loader',
-      },
-      {
-        test: /\.css$/,
-        exclude: /node_modules/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              modules: {
-                localIdentName: '[name]__[local]--[hash:base64:5]',
-              },
-            },
-          },
-        ],
-      },
-    ],
-  },
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'main.min.css', // 提取后的css的文件名

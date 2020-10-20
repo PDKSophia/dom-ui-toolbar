@@ -1,8 +1,13 @@
 import React from 'react'
-
+import styles from './index.less'
 class Main extends React.Component {
   render() {
-    return <div>-dom-ui-toolbar</div>
+    return (
+      <div className={styles.title}>
+        -dom-ui-toolbar
+        <span className={styles.text}>hasifsa</span>
+      </div>
+    )
   }
 }
 

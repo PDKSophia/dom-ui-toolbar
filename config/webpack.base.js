@@ -1,6 +1,13 @@
+const path = require('path');
+
 module.exports = {
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    alias: {
+      '@model': path.resolve(__dirname, '../src/model/'),
+      '@common': path.resolve(__dirname, '../src/common/'),
+      '@components': path.resolve(__dirname, '../src/components/')
+    },
+    extensions: ['.js', '.jsx', '.ts', '.tsx']
   },
   module: {
     rules: [
@@ -9,13 +16,13 @@ module.exports = {
         test: /\.(js|jsx|ts|tsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
-        },
+          loader: 'babel-loader'
+        }
       },
       {
         test: /\.css$/,
         include: /node_modules/,
-        loader: 'style-loader!css-loader',
+        loader: 'style-loader!css-loader'
       },
       {
         test: /\.css$/,
@@ -26,11 +33,11 @@ module.exports = {
             loader: 'css-loader',
             options: {
               modules: {
-                localIdentName: '[name]__[local]--[hash:base64:5]',
-              },
-            },
-          },
-        ],
+                localIdentName: '[name]__[local]--[hash:base64:5]'
+              }
+            }
+          }
+        ]
       },
       {
         test: /\.less$/,
@@ -41,15 +48,15 @@ module.exports = {
             loader: 'css-loader',
             options: {
               modules: {
-                localIdentName: '[name]__[local]--[hash:base64:5]',
-              },
-            },
+                localIdentName: '[name]__[local]--[hash:base64:5]'
+              }
+            }
           },
           {
-            loader: 'less-loader',
-          },
-        ],
-      },
-    ],
-  },
-}
+            loader: 'less-loader'
+          }
+        ]
+      }
+    ]
+  }
+};

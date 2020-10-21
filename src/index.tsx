@@ -1,3 +1,3 @@
-import Main from './container/Main'
+import Toolbar from './container/Toolbar';
 
-export default Main
+export default Toolbar;

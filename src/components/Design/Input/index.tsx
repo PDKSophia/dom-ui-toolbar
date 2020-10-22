@@ -5,9 +5,10 @@ import { Input } from 'antd';
 
 interface IProps {
   value: string;
+  type?: string;
 }
 
-function Textarea({ value }: IProps) {
+function DInput({ value }: IProps) {
   const [currentValue, setCurrentValue] = useState('');
 
   useEffect(() => {
@@ -20,9 +21,9 @@ function Textarea({ value }: IProps) {
   }
   return (
     <div className={styles.textarea}>
-      <Input.TextArea autoSize value={currentValue} onChange={onChangeValue} />
+      <Input value={currentValue} onChange={onChangeValue} />
     </div>
   );
 }
 
-export default Textarea;
+export default DInput;

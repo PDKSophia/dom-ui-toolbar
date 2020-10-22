@@ -1,0 +1,15 @@
+.layout {
+  width: 100%;
+  .box {
+    width: 100%;
+    padding-left: 16px;
+    margin: 16px 0;
+    position: relative;
+    box-sizing: border-box;
+    &::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+  }
+}

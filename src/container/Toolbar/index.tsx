@@ -6,6 +6,8 @@ class Toolbar extends React.Component {
     return (
       <div className={styles.toolbar}>
         <Layout />
+        <Layout />
+        <Layout />
       </div>
     );
   }

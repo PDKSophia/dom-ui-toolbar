@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import styles from './index.less';
+import Desc from '@components/Toolbar/Desc';
 import Title from '@components/Toolbar/Title';
 import Label from '@components/Toolbar/Label';
 import Textarea from '@components/Design/Textarea';
@@ -16,6 +17,10 @@ class Toolbar extends React.Component {
         <div className={styles.box}>
           <Label label="内容" />
           <Textarea value="内容" />
+        </div>
+        <div className={styles.box}>
+          <Label label="不透明度" />
+          <Textarea value="80%" />
         </div>
         <div className={styles.box}>
           <Label label="大小(px)" />
@@ -37,10 +42,9 @@ class Toolbar extends React.Component {
               }}
             />
           </div>
-        </div>
-        <div className={styles.box}>
-          <Label label="内容" />
-          <Textarea value="内容" />
+          <div className={styles.desc}>
+            <Desc desc={['宽度', '高度']} />
+          </div>
         </div>
       </div>
     );

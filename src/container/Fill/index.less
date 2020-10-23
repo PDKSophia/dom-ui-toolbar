@@ -1,0 +1,42 @@
+.fill {
+  width: 100%;
+  .box {
+    width: 100%;
+    padding-left: 16px;
+    margin: 16px 0;
+    position: relative;
+    box-sizing: border-box;
+    &::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+    .wrapper {
+      position: relative;
+      width: 184px;
+      float: left;
+      display: inline-flex;
+      justify-content: space-between;
+      .colorFill {
+        position: absolute;
+        .myTest {
+          width: 38px;
+          height: 38px;
+          :global {
+            .ant-input {
+              width: 38px;
+              height: 38px;
+              border-radius: 4px;
+              padding: 8px;
+            }
+          }
+        }
+      }
+    }
+    .desc {
+      width: 252px;
+      margin-top: 4px;
+      float: left;
+    }
+  }
+}

@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react';
 import styles from './index.less';
 import 'antd/dist/antd.css';
 import { Input } from 'antd';
+import classnames from 'classnames/bind';
+let cx = classnames.bind(styles);
 
 interface IProps {
   value: string;
+  iClassName?: string;
 }
 
-function Textarea({ value }: IProps) {
+function Textarea({ value, iClassName }: IProps) {
   const [currentValue, setCurrentValue] = useState('');
 
   useEffect(() => {
@@ -18,8 +21,10 @@ function Textarea({ value }: IProps) {
     setCurrentValue(e.target.value);
     console.log(e.target.value);
   }
+
+  console.log(iClassName);
   return (
-    <div className={styles.textarea}>
+    <div className={cx('textarea', iClassName)}>
       <Input.TextArea autoSize value={currentValue} onChange={onChangeValue} />
     </div>
   );

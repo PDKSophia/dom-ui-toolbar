@@ -6,37 +6,28 @@ import styles from './index.less';
 import Desc from '@components/Toolbar/Desc';
 import Title from '@components/Toolbar/Title';
 import Label from '@components/Toolbar/Label';
-import Textarea from '@components/Design/Textarea';
 import NumberInputOperator from '@components/Design/NumberInputOperator';
 
-class Toolbar extends React.Component {
+class Layout extends React.Component {
   render() {
     return (
       <div className={styles.layout}>
         <Title text="布局" />
         <div className={styles.box}>
-          <Label label="内容" />
-          <Textarea value="内容" />
-        </div>
-        <div className={styles.box}>
-          <Label label="不透明度" />
-          <Textarea value="80%" />
-        </div>
-        <div className={styles.box}>
           <Label label="大小(px)" />
           <div className={styles.wrapper}>
             <NumberInputOperator
-              defaultNum={3}
-              minNum={1}
+              defaultNum={284}
+              minNum={0}
               maxNum={1000}
               onNumberChang={(num: number) => {
                 console.log(num);
               }}
             />
             <NumberInputOperator
-              defaultNum={3}
+              defaultNum={500}
               minNum={1}
-              maxNum={1000}
+              maxNum={999}
               onNumberChang={(num: number) => {
                 console.log(num);
               }}
@@ -46,9 +37,22 @@ class Toolbar extends React.Component {
             <Desc desc={['宽度', '高度']} />
           </div>
         </div>
+        <div className={styles.box}>
+          <Label label="圆角(px)" />
+          <div className={styles.wrapper}>
+            <NumberInputOperator
+              defaultNum={4}
+              minNum={0}
+              maxNum={1000}
+              onNumberChang={(num: number) => {
+                console.log(num);
+              }}
+            />
+          </div>
+        </div>
       </div>
     );
   }
 }
 
-export default Toolbar;
+export default Layout;

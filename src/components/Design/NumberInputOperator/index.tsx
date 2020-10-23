@@ -59,13 +59,13 @@ function NumberInputOperator({ defaultNum, minNum, maxNum, onNumberChang, styles
     }
   };
 
-  const onQuestionInputNum = e => {
+  const onChangeInputNum = (e: any) => {
     const num = parseInt(e.target.value, 10);
     e.target.value = '';
     setNum(num > maxNum ? maxNum : num);
   };
 
-  const onQuestionInputBlur = e => {
+  const onInputBlur = (e: any) => {
     const num = e.target.value === '' ? 0 : parseInt(e.target.value, 10);
     let result = num;
     if (typeof num === 'number') {
@@ -93,8 +93,8 @@ function NumberInputOperator({ defaultNum, minNum, maxNum, onNumberChang, styles
         type="number"
         className={cx('input')}
         max="99"
-        onBlur={onQuestionInputBlur}
-        onChange={onQuestionInputNum}
+        onBlur={onInputBlur}
+        onChange={onChangeInputNum}
         onKeyPress={handleKeyPress}
         disabled={maxNum === 0}
       />

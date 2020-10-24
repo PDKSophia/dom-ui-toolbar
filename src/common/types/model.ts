@@ -10,7 +10,7 @@ export interface IBaseModel {
 }
 
 export interface IFontModel extends IBaseModel {
-  fontColor: string; // 字体颜色
+  color: string; // 字体颜色
   fontFamily: string; // 字体类型
   fontSize: number | string; // 字体大小
   lineHeight: number | string; // 字体行高
@@ -25,4 +25,5 @@ export interface ILayoutModel extends IBaseModel {
   width: number | string; // 宽度
   height: number | string; // 宽度
   position: positionMaps; // 定位
+  borderRadius: number | string; // 圆角
 }

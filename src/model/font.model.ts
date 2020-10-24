@@ -3,10 +3,12 @@
  */
 import { IFontModel } from '@common/types/model';
 
-export const FontModel: IFontModel = {
-  fontColor: '',
+const FontModel: IFontModel = {
+  color: '',
   fontFamily: '',
   fontSize: '',
   lineHeight: '',
   letterSpacing: ''
 };
+
+export default FontModel;

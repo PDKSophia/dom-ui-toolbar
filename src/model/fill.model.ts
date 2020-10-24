@@ -3,6 +3,8 @@
  */
 import { IFillModel } from '@common/types/model';
 
-export const FillModel: IFillModel = {
+const FillModel: IFillModel = {
   backgroundColor: 'transparent' // 背景颜色
 };
+
+export default FillModel;

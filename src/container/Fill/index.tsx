@@ -7,6 +7,7 @@ import Title from '@components/Toolbar/Title';
 import Label from '@components/Toolbar/Label';
 import Input from '@components/Design/Input';
 import InputNumber from '@components/Design/InputNumber';
+import NumberInputOperator from '@components/Design/NumberInputOperator';
 
 function Fill() {
   const [currentColor, setCurrentColor] = useState('#000000');
@@ -39,6 +40,22 @@ function Fill() {
       </div>
       <div className={styles.box}>
         <Label label="背景色" />
+        <div className={styles.wrapper}>
+          <Input value={currentColor} onChange={onPickColor} onBlur={onColorBlur} />
+          <div className={styles.colorFill}>
+            <Input type="color" value={currentColor} onChange={onPickColor} iClassName={styles.myTest} />
+          </div>
+        </div>
+      </div>
+      <div className={styles.box}>
+        <Label label="边框(px)" />
+        <div className={styles.wrapper}>
+          <NumberInputOperator defaultNum={4} minNum={0} maxNum={1000} onNumberChang={(num: number) => {}} />
+          <NumberInputOperator defaultNum={4} minNum={0} maxNum={1000} onNumberChang={(num: number) => {}} />
+        </div>
+      </div>
+      <div className={styles.box}>
+        <Label label="边框颜色" />
         <div className={styles.wrapper}>
           <Input value={currentColor} onChange={onPickColor} onBlur={onColorBlur} />
           <div className={styles.colorFill}>

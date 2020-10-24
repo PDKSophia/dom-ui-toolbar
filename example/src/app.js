@@ -11,6 +11,7 @@ function Main() {
   const prevDom = useRef(null);
   const demoRef = useRef(null);
   const toolbarRef = useRef(null);
+  const [currentDom, setCurrentDom] = useState(null);
   const [showToolbar, setShowToolbar] = useState(true);
 
   useEffect(() => {
@@ -29,6 +30,7 @@ function Main() {
   });
 
   function toggleToolbar(e) {
+    setCurrentDom(e.target);
     setShowToolbar(true);
     if (e.target.style.border === addStyle) {
       e.target.style.boxSizing = 'content-box';
@@ -44,6 +46,12 @@ function Main() {
     }
   }
 
+  function onChangeStyle(newStyle) {
+    console.log('最新的styles: ', newStyle);
+    if (currentDom) {
+      currentDom.style = newStyle;
+    }
+  }
   return (
     <>
       <div className={styles.demo} ref={demoRef}>
@@ -65,7 +73,7 @@ function Main() {
           hidden: !showToolbar
         })}
       >
-        <Toolbar />
+        <Toolbar dom={currentDom} onChangeStyle={onChangeStyle} />
       </div>
     </>
   );

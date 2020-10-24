@@ -19,10 +19,8 @@ function Textarea({ value, iClassName }: IProps) {
 
   function onChangeValue(e: any) {
     setCurrentValue(e.target.value);
-    console.log(e.target.value);
   }
 
-  console.log(iClassName);
   return (
     <div className={cx('textarea', iClassName)}>
       <Input.TextArea autoSize value={currentValue} onChange={onChangeValue} />

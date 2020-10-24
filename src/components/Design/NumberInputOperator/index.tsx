@@ -27,13 +27,19 @@ interface NumberInputOperatorProps {
  * @property {React.CSSProperties} styles - 样式
  */
 function NumberInputOperator({ defaultNum, minNum, maxNum, onNumberChang, styles }: NumberInputOperatorProps) {
-  const [num, setNum] = useState(defaultNum || 0);
+  const [num, setNum] = useState(0);
   const handleKeyPress = (e: any) => {
     const invalidChars = ['-', '+', 'e', '.', 'E'];
     if (invalidChars.indexOf(e.key) !== -1) {
       e.preventDefault();
     }
   };
+
+  useEffect(() => {
+    if (defaultNum) {
+      setNum(defaultNum);
+    }
+  }, [defaultNum]);
 
   const minClassName = cx({
     btn: true,

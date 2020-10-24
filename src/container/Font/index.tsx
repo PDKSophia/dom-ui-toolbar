@@ -38,35 +38,14 @@ function Font() {
       <div className={styles.box}>
         <Label label="大小(px)" />
         <div className={styles.wrapper}>
-          <NumberInputOperator
-            defaultNum={4}
-            minNum={0}
-            maxNum={1000}
-            onNumberChang={(num: number) => {
-              console.log(num);
-            }}
-          />
+          <NumberInputOperator defaultNum={4} minNum={0} maxNum={1000} onNumberChang={(num: number) => {}} />
         </div>
       </div>
       <div className={styles.box}>
         <Label label="空间(px)" />
         <div className={styles.wrapper}>
-          <NumberInputOperator
-            defaultNum={12}
-            minNum={0}
-            maxNum={1000}
-            onNumberChang={(num: number) => {
-              console.log(num);
-            }}
-          />
-          <NumberInputOperator
-            defaultNum={24}
-            minNum={1}
-            maxNum={999}
-            onNumberChang={(num: number) => {
-              console.log(num);
-            }}
-          />
+          <NumberInputOperator defaultNum={12} minNum={0} maxNum={1000} onNumberChang={(num: number) => {}} />
+          <NumberInputOperator defaultNum={24} minNum={1} maxNum={999} onNumberChang={(num: number) => {}} />
         </div>
         <div className={styles.desc}>
           <Desc desc={['字间距', '行间距']} />

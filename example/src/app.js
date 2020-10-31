@@ -3,8 +3,10 @@ import styles from './index.less';
 import { render } from 'react-dom';
 import { useClickAway } from 'react-use';
 import classnames from 'classnames/bind';
-import Toolbar from '../../src';
+import SugarDomUI from '../../src';
 let cname = classnames.bind(styles);
+
+const { Toolbar, Material } = SugarDomUI;
 
 function Main() {
   const addStyle = '1px solid red';
@@ -49,11 +51,23 @@ function Main() {
   function onChangeStyle(newStyle) {
     console.log('最新的styles: ', newStyle);
     if (currentDom) {
-      currentDom.style = newStyle;
+      // currentDom.style = newStyle;
+      console.log(currentDom, Object.getOwnPropertyDescriptor(currentDom, 'style'));
+      Object.keys(newStyle).forEach(key => {
+        currentDom.style[key] = newStyle[key];
+      });
     }
   }
   return (
     <>
+      <div
+        ref={toolbarRef}
+        className={cname({
+          material: true
+        })}
+      >
+        <Material />
+      </div>
       <div className={styles.demo} ref={demoRef}>
         <div className={styles.dom1}>DOM 1</div>
         <div className={styles.flex}>

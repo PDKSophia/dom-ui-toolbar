@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import styles from './index.less';
-import Layout from '../Layout';
-import Content from '../Content';
-import Fill from '../Fill';
-import Font from '../Font';
-import Code from '../Code';
-import MyScrollBox from '@components/Toolbar/MyScrollBox';
 import { getDomStyles } from '@common/utils';
+import Fill from './components/Fill';
+import Font from './components/Font';
+import Code from './components/Code';
+import Layout from './components/Layout';
+import Content from './components/Content';
+import MyScrollBox from '@components/Base/MyScrollBox';
 
 // 引入数据模型
 import FillModel from '@model/fill.model';

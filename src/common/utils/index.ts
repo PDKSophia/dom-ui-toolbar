@@ -1,4 +1,3 @@
-import { deflate } from 'zlib';
 export function filterStyles(styles: CSSStyleDeclaration, styleKeys: String[]): { [key: string]: any } {
   let styleMaps = {};
   styleKeys.forEach((styleName: string) => {

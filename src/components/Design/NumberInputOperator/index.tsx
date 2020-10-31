@@ -1,5 +1,4 @@
 /**
- * @desc 答题卡批量添加-选项个数
  * @author {pengdaokuan}
  */
 import React, { useState, useEffect } from 'react';

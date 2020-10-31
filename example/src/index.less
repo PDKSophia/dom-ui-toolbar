@@ -3,6 +3,7 @@
 //   padding: 0;
 // }
 .demo {
+  margin-left: 382px;
   width: 400px;
   height: 400px;
   background: #f1f1f1;
@@ -67,6 +68,21 @@
         transform: scale(1.015);
       }
     }
+  }
+}
+
+.material {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 294px;
+  translate: all 1s;
+  &.hidden {
+    visibility: hidden;
+  }
+  &.open {
+    visibility: visible;
   }
 }
 

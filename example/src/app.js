@@ -6,7 +6,7 @@ import classnames from 'classnames/bind';
 import SugarDomUI from '../../src';
 let cname = classnames.bind(styles);
 
-const { Toolbar, Material } = SugarDomUI;
+const { Toolbar, Material, WinCenter } = SugarDomUI;
 
 function Main() {
   const addStyle = '1px solid red';
@@ -67,6 +67,9 @@ function Main() {
         })}
       >
         <Material />
+      </div>
+      <div className={styles.content}>
+        <WinCenter />
       </div>
       <div className={styles.demo} ref={demoRef}>
         <div className={styles.dom1}>DOM 1</div>

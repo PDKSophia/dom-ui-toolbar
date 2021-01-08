@@ -4,6 +4,7 @@
   "description": "DOM元素UI工具条",
   "main": "dist/index.js",
   "scripts": {
+    "webpack:dev": "webpack-dev-server --config config/webpack.dev.config.js",
     "start": "webpack-dev-server --config config/webpack.dev.config.js",
     "build": "webpack --config config/webpack.prod.config.js",
     "pub": "npm run build && npm publish",

@@ -2,7 +2,7 @@
  * @desc Fill 填充模块
  */
 import React, { useState, ChangeEventHandler } from 'react';
-import styles from './index.less';
+import './index.less';
 import Title from '@components/Toolbar/Title';
 import Label from '@components/Toolbar/Label';
 import Input from '@components/Design/Input';
@@ -32,34 +32,34 @@ function Fill() {
   }
 
   return (
-    <div className={styles.fill}>
+    <div styleName="fill">
       <Title text="填充" />
-      <div className={styles.box}>
+      <div styleName="box">
         <Label label="透明度" />
         <InputNumber minNum={0} maxNum={100} value={currentOpacity} onBlur={onBlurOpacity} onChange={onChangeOpacity} />
       </div>
-      <div className={styles.box}>
+      <div styleName="box">
         <Label label="背景色" />
-        <div className={styles.wrapper}>
+        <div styleName="wrapper">
           <Input value={currentColor} onChange={onPickColor} onBlur={onColorBlur} />
-          <div className={styles.colorFill}>
-            <Input type="color" value={currentColor} onChange={onPickColor} iClassName={styles.myTest} />
+          <div styleName="colorFill">
+            <Input type="color" value={currentColor} onChange={onPickColor} iClassName="color-input" />
           </div>
         </div>
       </div>
-      <div className={styles.box}>
+      <div styleName="box">
         <Label label="边框(px)" />
-        <div className={styles.wrapper}>
+        <div styleName="wrapper">
           <NumberInputOperator defaultNum={4} minNum={0} maxNum={1000} onNumberChang={(num: number) => {}} />
           <NumberInputOperator defaultNum={4} minNum={0} maxNum={1000} onNumberChang={(num: number) => {}} />
         </div>
       </div>
-      <div className={styles.box}>
+      <div styleName="box">
         <Label label="边框颜色" />
-        <div className={styles.wrapper}>
+        <div styleName="wrapper">
           <Input value={currentColor} onChange={onPickColor} onBlur={onColorBlur} />
-          <div className={styles.colorFill}>
-            <Input type="color" value={currentColor} onChange={onPickColor} iClassName={styles.myTest} />
+          <div styleName="colorFill">
+            <Input type="color" value={currentColor} onChange={onPickColor} iClassName="color-input" />
           </div>
         </div>
       </div>

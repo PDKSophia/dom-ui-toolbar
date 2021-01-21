@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './index.less';
+import './index.less';
 import { Switch, Menu, Dropdown, Button } from 'antd';
 import { PHONE_MAPS } from '@common/constant';
 import globalModel from '@store/global';
@@ -21,15 +21,15 @@ function Header() {
     );
   }
   return (
-    <div className={styles.header}>
-      <div className={styles.view} onClick={() => {}}>
+    <div styleName="header">
+      <div styleName="view" onClick={() => {}}>
         开启全屏
-        <Switch size="small" checked={false} className={styles.marginLeft} />
+        <Switch size="small" checked={false} className="marginLeft" />
       </div>
-      <div className={styles.view} onClick={() => {}}>
+      <div styleName="view" onClick={() => {}}>
         机型尺寸
-        <Dropdown overlay={renderMenu} placement="bottomLeft" className={styles.marginLeft} trigger={['click']}>
-          <Button className={styles.phoneBtn} onClick={e => e.preventDefault()}>
+        <Dropdown overlay={renderMenu} placement="bottomLeft" className="marginLeft" trigger={['click']}>
+          <Button styleName="phoneBtn" onClick={e => e.preventDefault()}>
             {selectPhone}
           </Button>
         </Dropdown>

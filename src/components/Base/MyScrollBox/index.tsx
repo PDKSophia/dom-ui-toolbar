@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './index.less';
+import './index.less';
 
 interface IScrollBoxProps {
   children: any;
@@ -15,9 +15,9 @@ function MyScrollBox({ children, maxHeight = 500, style = null }: IScrollBoxProp
     _style = { ..._style, maxHeight: `${maxHeight}px` };
   }
   return (
-    <div className={styles.MyScrollBox_outer} style={_style}>
-      <div className={styles.MyScrollBox_hidden_scroll} style={{ maxHeight: `${maxHeight}px` }}>
-        <div className={styles.MyScrollBox_inner}>{children}</div>
+    <div styleName="MyScrollBox_outer" style={_style}>
+      <div styleName="MyScrollBox_hidden_scroll" style={{ maxHeight: `${maxHeight}px` }}>
+        <div styleName="MyScrollBox_inner">{children}</div>
       </div>
     </div>
   );

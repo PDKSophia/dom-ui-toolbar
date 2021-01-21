@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styles from './index.less';
+import './index.less';
 import { getDomStyles } from '@common/utils';
 import Fill from './components/Fill';
 import Font from './components/Font';
@@ -36,7 +36,7 @@ function Toolbar({ dom, onChangeStyle }: IProps) {
 
   const height = document.body.clientHeight;
   return (
-    <div className={styles.toolbar}>
+    <div styleName="toolbar">
       <MyScrollBox maxHeight={height}>
         <Layout style={layoutRectStyle} onChangeStyle={onChangeStyle} />
         <Fill />

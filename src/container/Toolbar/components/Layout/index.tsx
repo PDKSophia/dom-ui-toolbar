@@ -2,7 +2,7 @@
  * @desc Layout 区域模块
  */
 import React, { useEffect } from 'react';
-import styles from './index.less';
+import './index.less';
 import Desc from '@components/Toolbar/Desc';
 import Title from '@components/Toolbar/Title';
 import Label from '@components/Toolbar/Label';
@@ -15,11 +15,11 @@ function Layout({ style, onChangeStyle }) {
   }, [style]);
 
   return (
-    <div className={styles.layout}>
+    <div styleName="layout">
       <Title text="布局" />
-      <div className={styles.box}>
+      <div styleName="box">
         <Label label="大小(px)" />
-        <div className={styles.wrapper}>
+        <div styleName="wrapper">
           <NumberInputOperator
             defaultNum={style ? transformValue(style.width) : 0}
             minNum={0}
@@ -33,13 +33,13 @@ function Layout({ style, onChangeStyle }) {
           />
           <NumberInputOperator defaultNum={500} minNum={1} maxNum={999} onNumberChang={(num: number) => {}} />
         </div>
-        <div className={styles.desc}>
+        <div styleName="desc">
           <Desc desc={['宽度', '高度']} />
         </div>
       </div>
-      <div className={styles.box}>
+      <div styleName="box">
         <Label label="圆角(px)" />
-        <div className={styles.wrapper}>
+        <div styleName="wrapper">
           <NumberInputOperator defaultNum={4} minNum={0} maxNum={1000} onNumberChang={(num: number) => {}} />
         </div>
       </div>

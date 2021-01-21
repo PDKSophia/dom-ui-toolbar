@@ -2,7 +2,7 @@
  * @desc 全局store
  */
 import { useState } from 'react';
-import hoxAPI from 'sugar-hox-devtools';
+import _API from 'sugar-hox-devtools';
 import { PHONE_MAPS, PHONE_SIZE } from '@common/constant';
 import { IPhoneSizeProps } from '@common/types/common';
 
@@ -28,5 +28,5 @@ function usePhoneModel() {
 usePhoneModel.namespace = 'usePhoneModel';
 
 export default {
-  usePhoneModel: hoxAPI.createModel(usePhoneModel)
+  usePhoneModel: _API.createModel(usePhoneModel)
 };

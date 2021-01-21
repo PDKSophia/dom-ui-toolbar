@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // 用于将组
 
 const devConfig = {
   mode: 'development',
-  entry: path.join(__dirname, '../example/src/app.js'),
+  entry: path.join(__dirname, '../example/src/index.tsx'),
   output: {
     path: path.join(__dirname, '../dist/'),
     filename: 'bundle.js', // 使用 webpack-dev-server 启动开发服务时，并不会实际在`src`目录下生成bundle.js，打包好的文件是在内存中的，但并不影响我们使用。

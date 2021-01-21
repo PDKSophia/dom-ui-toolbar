@@ -47,6 +47,7 @@
         "@model/*": ["./model/*"],
         "@store/*": ["./store/*"],
         "@common/*": ["./common/*"],
+        "@container/*": ["./container/*"],
         "@components/*": ["./components/*"],
       },
       // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */

@@ -6,6 +6,7 @@ module.exports = {
       '@model': path.resolve(__dirname, '../src/model/'),
       '@store': path.resolve(__dirname, '../src/store/'),
       '@common': path.resolve(__dirname, '../src/common/'),
+      '@container': path.resolve(__dirname, '../src/container/'),
       '@components': path.resolve(__dirname, '../src/components/')
     },
     extensions: ['.js', '.jsx', '.ts', '.tsx']

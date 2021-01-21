@@ -5,10 +5,6 @@ import Text from './Text';
 import Button from './Button';
 import Cover from './Cover';
 
-interface IProps {
-  dom: any;
-  onChangeStyle: (newStyle: any) => void;
-}
 function Material() {
   const height = document.body.clientHeight;
   return (

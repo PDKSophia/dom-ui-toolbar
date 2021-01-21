@@ -1,6 +1,6 @@
-import Material from './container/pages/Material';
-import Toolbar from './container/pages/Toolbar';
-import WinCenter from './container/pages/WinCenter';
+import Material from './container/Material';
+import Toolbar from './container/Toolbar';
+import WinCenter from './container/WinCenter';
 
 export default {
   Material,

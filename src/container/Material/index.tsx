@@ -14,14 +14,16 @@ function Material() {
           {Object.keys(ComponentsList).map((componentName: string, index: number) => {
             const RenderComponent = ComponentsList[componentName];
             return (
-              <RenderComponent
-                key={index}
-                draggable={true}
-                onDragStart={(e: React.DragEvent<HTMLDivElement>) => {
-                  console.log(e.currentTarget);
-                  e.dataTransfer.setData('ComponentName', componentName);
-                }}
-              />
+              <div styleName="item">
+                <RenderComponent
+                  key={index}
+                  draggable={true}
+                  onDragStart={(e: React.DragEvent<HTMLDivElement>) => {
+                    console.log(e.currentTarget);
+                    e.dataTransfer.setData('ComponentName', componentName);
+                  }}
+                />
+              </div>
             );
           })}
         </div>

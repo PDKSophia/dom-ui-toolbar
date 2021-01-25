@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './index.less';
 import * as ComponentsList from './components';
 import MyScrollBox from '@components/Base/MyScrollBox';
 
 function Material() {
   const height = document.body.clientHeight;
-  const [currentComponent, setCurrentComponent] = useState();
 
   return (
     <div styleName="material">
@@ -20,8 +19,7 @@ function Material() {
                 draggable={true}
                 onDragStart={(e: React.DragEvent<HTMLDivElement>) => {
                   console.log(e.currentTarget);
-                  e.dataTransfer.setData('Button', '111');
-                  console.log('拖');
+                  e.dataTransfer.setData('ComponentName', componentName);
                 }}
               />
             );

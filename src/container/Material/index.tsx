@@ -14,12 +14,11 @@ function Material() {
           {Object.keys(ComponentsList).map((componentName: string, index: number) => {
             const RenderComponent = ComponentsList[componentName];
             return (
-              <div styleName="item">
+              <div styleName="item" key={`${componentName}_${index}`}>
                 <RenderComponent
                   key={index}
                   draggable={true}
                   onDragStart={(e: React.DragEvent<HTMLDivElement>) => {
-                    console.log(e.currentTarget);
                     e.dataTransfer.setData('ComponentName', componentName);
                   }}
                 />

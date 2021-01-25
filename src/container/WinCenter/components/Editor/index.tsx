@@ -4,26 +4,20 @@
  */
 import React from 'react';
 import './index.less';
+import * as Types from '@common/types/component';
 import useEditorStoreModel from '@store/editor';
 
 function Editor() {
-  const { editorComponentList, dispatchAddComponentAction } = useEditorStoreModel();
+  const { editorComponentList } = useEditorStoreModel();
   return (
-    <div
-      styleName="editor"
-      onDrop={(e: React.DragEvent<HTMLDivElement>) => {
-        e.preventDefault();
-        e.stopPropagation();
-        const componentName = e.dataTransfer.getData('ComponentName');
-        dispatchAddComponentAction(componentName);
-      }}
-      onDragOver={(e: React.DragEvent<HTMLDivElement>) => {
-        e.preventDefault();
-      }}
-    >
+    <div styleName="editor">
       {editorComponentList.length > 0 &&
-        editorComponentList.map((EditComponent: any, index: number) => {
-          return <EditComponent key={index} />;
+        editorComponentList.map((EditComponent: Types.IStoreComponentProps, index: number) => {
+          return (
+            <div styleName="wrapper-component" key={EditComponent.componentId} style={EditComponent.style}>
+              <EditComponent.componentInstance key={EditComponent.componentId} />
+            </div>
+          );
         })}
     </div>
   );

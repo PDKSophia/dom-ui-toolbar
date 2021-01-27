@@ -34,7 +34,8 @@ function Editor() {
               style={{
                 left: EditComponent?.style?.left || 0,
                 top: EditComponent?.style?.top || 0,
-                zIndex: EditComponent?.style.zIndex || 0
+                zIndex: EditComponent?.style?.zIndex || 0,
+                cursor: EditComponent?.style?.cursor || 'default'
               }}
               onMouseDown={(e: React.MouseEvent) => {
                 handleOnMouseDown(e, componentIndex);

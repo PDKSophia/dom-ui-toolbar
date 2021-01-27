@@ -7,10 +7,11 @@ import Header from './components/Header';
 import Editor from './components/Editor';
 import useEditorStoreModel from '@store/editor';
 import useScreenSizeModel from '@store/screenSize';
+import { IDomStyleType } from '@common/types/domStyle';
 
 function WinCenter() {
   const { selectPcSize } = useScreenSizeModel();
-  const { dispatchAddComponentAction } = useEditorStoreModel();
+  const { editorComponentList, dispatchAddComponentAction } = useEditorStoreModel();
 
   return (
     <div styleName="winCenter">
@@ -26,11 +27,18 @@ function WinCenter() {
           e.preventDefault();
           e.stopPropagation();
           const componentName = e.dataTransfer.getData('ComponentName');
-          const componentDomStyle = JSON.parse(e.dataTransfer.getData('componentDomStyle'));
+          let componentDomStyle: IDomStyleType = {};
+          try {
+            componentDomStyle = JSON.parse(e.dataTransfer.getData('componentDomStyle'));
+          } catch (err) {
+            componentDomStyle = {};
+          }
           dispatchAddComponentAction(componentName, {
             ...componentDomStyle,
             left: e.nativeEvent.offsetX,
-            top: e.nativeEvent.offsetY
+            top: e.nativeEvent.offsetY,
+            cursor: 'default',
+            zIndex: editorComponentList.length
           });
         }}
         onDragOver={(e: React.DragEvent<HTMLDivElement>) => {

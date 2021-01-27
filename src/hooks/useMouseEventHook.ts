@@ -40,6 +40,7 @@ export default function() {
       const currentY = moveEvent.clientY;
 
       const repaintStyle = {
+        ...currentEditComponent.style,
         top: currentY - y + top,
         left: currentX - x + left,
         cursor

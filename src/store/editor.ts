@@ -22,17 +22,12 @@ function useEditorStoreModel() {
    * @param componentStyles 组件自定义样式
    */
   const dispatchAddComponentAction = (componentName: string, componentStyles?: StyleType.IDomStyleType) => {
-    console.log('####', componentStyles);
     const componentInstance = ComponentsList[componentName];
     let prevStore = cloneDeep(editorComponentList);
     prevStore.push({
       componentId: createUUid(),
       componentInstance,
-      style: {
-        ...componentStyles,
-        cursor: 'default',
-        zIndex: prevStore.length
-      }
+      style: componentStyles
     });
     setEditorComponentList(prevStore);
   };
@@ -43,11 +38,11 @@ function useEditorStoreModel() {
   /**
    * 画布内移动组件，动态修改坐标位置
    */
-  const dispatchUpdateComponentPositionAction = (index: number, newStyle: React.CSSProperties) => {
-    const store = cloneDeep(editorComponentList);
-    const newItem = { ...store[index], style: { ...store[index].style, ...newStyle } };
-    store[index] = newItem;
-    setEditorComponentList(store);
+  const dispatchUpdateComponentPositionAction = (componentIndex: number, componentStyles?: StyleType.IDomStyleType) => {
+    const prevStore = cloneDeep(editorComponentList);
+    const moveComponent = { ...prevStore[componentIndex], style: { ...componentStyles } };
+    prevStore[componentIndex] = moveComponent;
+    setEditorComponentList(prevStore);
   };
   return {
     editorComponentList,

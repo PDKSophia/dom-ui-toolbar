@@ -28,6 +28,7 @@ function useEditorStoreModel() {
       componentInstance,
       style: {
         ...componentStyles,
+        cursor: 'default',
         zIndex: prevStore.length
       }
     });
@@ -37,11 +38,20 @@ function useEditorStoreModel() {
    * 清空画布，清除所有组件
    */
   const dispatchClearTotalComponentAction = () => setEditorComponentList([]);
-
+  /**
+   * 画布内移动组件，动态修改坐标位置
+   */
+  const dispatchUpdateComponentPositionAction = (index: number, newStyle: React.CSSProperties) => {
+    const store = cloneDeep(editorComponentList);
+    const newItem = { ...store[index], style: { ...store[index].style, ...newStyle } };
+    store[index] = newItem;
+    setEditorComponentList(store);
+  };
   return {
     editorComponentList,
     dispatchAddComponentAction,
-    dispatchClearTotalComponentAction
+    dispatchClearTotalComponentAction,
+    dispatchUpdateComponentPositionAction
   };
 }
 

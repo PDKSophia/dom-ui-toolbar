@@ -33,10 +33,15 @@ function useEditorStoreModel() {
     });
     setEditorComponentList(prevStore);
   };
+  /**
+   * 清空画布，清除所有组件
+   */
+  const dispatchClearTotalComponentAction = () => setEditorComponentList([]);
 
   return {
     editorComponentList,
-    dispatchAddComponentAction
+    dispatchAddComponentAction,
+    dispatchClearTotalComponentAction
   };
 }
 

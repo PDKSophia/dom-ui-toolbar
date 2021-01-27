@@ -9,8 +9,8 @@ import useEditorStoreModel from '@store/editor';
 import useScreenSizeModel from '@store/screenSize';
 
 function WinCenter() {
-  const { dispatchAddComponentAction } = useEditorStoreModel();
   const { selectPcSize } = useScreenSizeModel();
+  const { dispatchAddComponentAction } = useEditorStoreModel();
 
   return (
     <div styleName="winCenter">

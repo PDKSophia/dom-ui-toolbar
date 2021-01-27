@@ -2,10 +2,12 @@ import React from 'react';
 import './index.less';
 import { Switch, Menu, Dropdown, Button } from 'antd';
 import { PC_SIZE } from '@common/constant';
+import useEditorStoreModel from '@store/editor';
 import useScreenSizeModel from '@store/screenSize';
 
 function Header() {
   const { selectPc, changeSelectPc } = useScreenSizeModel();
+  const { dispatchClearTotalComponentAction } = useEditorStoreModel();
 
   function renderMenu() {
     return (
@@ -30,6 +32,11 @@ function Header() {
       <div styleName="view" onClick={() => {}}>
         开启全屏
         <Switch size="small" checked={false} className="marginLeft" />
+      </div>
+      <div styleName="view">
+        <Button styleName="phoneBtn" onClick={dispatchClearTotalComponentAction}>
+          清空画布
+        </Button>
       </div>
       <div styleName="view" onClick={() => {}}>
         屏幕尺寸

@@ -16,7 +16,7 @@ function Material() {
             return (
               <div styleName="item" key={`${componentName}_${index}`}>
                 <RenderComponent
-                  key={index}
+                  key={`${componentName}_${index}`}
                   draggable={true}
                   onDragStart={(e: React.DragEvent<HTMLDivElement>) => {
                     e.dataTransfer.setData('ComponentName', componentName);

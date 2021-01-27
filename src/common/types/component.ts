@@ -1,7 +1,7 @@
 // 拖拽
 export interface IDragProps {
   draggable: boolean;
-  onDragStart: (e: React.DragEvent<HTMLDivElement>) => void;
+  onDragStart: (e: React.DragEvent<HTMLDivElement>, componentRefs?: HTMLDivElement) => void;
 }
 
 // 单个组件

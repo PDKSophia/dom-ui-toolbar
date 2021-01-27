@@ -6,8 +6,18 @@ import './index.less';
 import * as Types from '@common/types/component';
 
 function Button({ draggable, onDragStart }: Types.IDragProps) {
+  const componentRefs = React.useRef<HTMLDivElement>();
+
+  const getComponentRefs = () => {
+    return componentRefs?.current || null;
+  };
+
+  const onDrag = (e: React.DragEvent<HTMLDivElement>) => {
+    onDragStart && onDragStart(e, getComponentRefs());
+  };
+
   return (
-    <div styleName="btn" draggable={draggable} onDragStart={onDragStart}>
+    <div ref={componentRefs} styleName="btn" draggable={draggable} onDragStart={onDrag}>
       基础按钮
     </div>
   );

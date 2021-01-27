@@ -22,6 +22,7 @@ function Editor() {
     }
     mouseComponent(componentIndex, e);
   }
+
   return (
     <div styleName="editor">
       {editorComponentList.length > 0 &&
@@ -35,7 +36,7 @@ function Editor() {
                 handleOnMouseDown(e, componentIndex);
               }}
             >
-              <EditComponent.componentInstance key={EditComponent.componentId} />
+              {EditComponent.componentInstance && <EditComponent.componentInstance key={EditComponent.componentId} />}
             </div>
           );
         })}

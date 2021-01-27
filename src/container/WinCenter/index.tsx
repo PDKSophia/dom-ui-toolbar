@@ -26,7 +26,9 @@ function WinCenter() {
           e.preventDefault();
           e.stopPropagation();
           const componentName = e.dataTransfer.getData('ComponentName');
+          const componentDomStyle = JSON.parse(e.dataTransfer.getData('componentDomStyle'));
           dispatchAddComponentAction(componentName, {
+            ...componentDomStyle,
             left: e.nativeEvent.offsetX,
             top: e.nativeEvent.offsetY
           });

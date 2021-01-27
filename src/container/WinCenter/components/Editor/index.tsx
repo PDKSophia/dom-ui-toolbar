@@ -31,7 +31,11 @@ function Editor() {
             <div
               styleName="wrapper-component"
               key={EditComponent.componentId}
-              style={EditComponent.style}
+              style={{
+                left: EditComponent?.style?.left || 0,
+                top: EditComponent?.style?.top || 0,
+                zIndex: EditComponent?.style.zIndex || 0
+              }}
               onMouseDown={(e: React.MouseEvent) => {
                 handleOnMouseDown(e, componentIndex);
               }}

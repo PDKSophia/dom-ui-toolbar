@@ -8,11 +8,6 @@ import Layout from './components/Layout';
 import Content from './components/Content';
 import MyScrollBox from '@components/Base/MyScrollBox';
 
-// 引入数据模型
-import FillModel from '@model/fill.model';
-import FontModel from '@model/font.model';
-import LayoutModel from '@model/layout.model';
-
 interface IProps {
   dom: any;
   onChangeStyle: (newStyle: any) => void;
@@ -25,12 +20,12 @@ function Toolbar({ dom, onChangeStyle }: IProps) {
 
   useEffect(() => {
     if (dom) {
-      const fillModelStyles = getDomStyles(dom, FillModel);
-      setFillRectStyle(fillModelStyles);
-      const fontModelStyles = getDomStyles(dom, FontModel);
-      setFontRectStyle(fontModelStyles);
-      const layoutModelStyles = getDomStyles(dom, LayoutModel);
-      setLayoutRectStyle(layoutModelStyles);
+      // const fillModelStyles = getDomStyles(dom, FillModel);
+      // setFillRectStyle(fillModelStyles);
+      // const fontModelStyles = getDomStyles(dom, FontModel);
+      // setFontRectStyle(fontModelStyles);
+      // const layoutModelStyles = getDomStyles(dom, LayoutModel);
+      // setLayoutRectStyle(layoutModelStyles);
     }
   }, [dom]);
 

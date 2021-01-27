@@ -6,15 +6,21 @@ import './index.less';
 import Header from './components/Header';
 import Editor from './components/Editor';
 import useEditorStoreModel from '@store/editor';
+import useScreenSizeModel from '@store/screenSize';
 
 function WinCenter() {
   const { dispatchAddComponentAction } = useEditorStoreModel();
+  const { selectPcSize } = useScreenSizeModel();
 
   return (
     <div styleName="winCenter">
       <Header />
       {/* 画布 */}
       <div
+        style={{
+          width: selectPcSize?.WIDTH || 800,
+          height: selectPcSize?.HEIGHT || 450
+        }}
         styleName="editor-canvas"
         onDrop={(e: React.DragEvent<HTMLDivElement>) => {
           e.preventDefault();

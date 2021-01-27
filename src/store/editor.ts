@@ -40,4 +40,6 @@ function useEditorStoreModel() {
   };
 }
 
+useEditorStoreModel.namespace = 'useEditorStoreModel';
+
 export default _.createModel(useEditorStoreModel);

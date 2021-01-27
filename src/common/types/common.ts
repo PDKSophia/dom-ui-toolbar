@@ -1,7 +1,7 @@
-interface IPhoneSizeProps {
+interface ISizeProps {
   DPR: number;
   WIDTH: number;
   HEIGHT: number;
 }
 
-export { IPhoneSizeProps };
+export { ISizeProps };

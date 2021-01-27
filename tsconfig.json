@@ -46,6 +46,7 @@
       "paths": {
         "@model/*": ["./model/*"],
         "@store/*": ["./store/*"],
+        "@hooks/*": ["./hooks/*"],
         "@common/*": ["./common/*"],
         "@container/*": ["./container/*"],
         "@components/*": ["./components/*"],

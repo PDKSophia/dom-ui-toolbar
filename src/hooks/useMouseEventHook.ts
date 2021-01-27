@@ -18,11 +18,11 @@ export default function() {
       return;
     }
 
-    // 获得客户端区域的坐标
+    // 获得最开始，鼠标按下时的客户端区域的坐标
     const x = e.clientX;
     const y = e.clientY;
 
-    // 获得元素之前的偏移量
+    // 获得元素之前的定位偏移量
     const top = Number(currentEditComponent?.style?.top) || 0;
     const left = Number(currentEditComponent?.style?.left) || 0;
 
@@ -34,8 +34,11 @@ export default function() {
 
     const mouseMove = (moveEvent: MouseEvent) => {
       isMouseDown = true;
+
+      // 获得元素移动过程中的客户端区域坐标
       const currentX = moveEvent.clientX;
       const currentY = moveEvent.clientY;
+
       const repaintStyle = {
         top: currentY - y + top,
         left: currentX - x + left,

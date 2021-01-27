@@ -6,11 +6,11 @@ import React from 'react';
 import './index.less';
 import * as Types from '@common/types/component';
 import useEditorStoreModel from '@store/editor';
-import useDragEventHooks from '@hooks/useDragEventHook';
+import useMouseEventHook from '@hooks/useMouseEventHook';
 
 function Editor() {
   const { editorComponentList } = useEditorStoreModel();
-  const drag = useDragEventHooks();
+  const mouseComponent = useMouseEventHook();
 
   function handleOnMouseDown(e: React.MouseEvent, componentIndex: number) {
     if (e.stopPropagation) {
@@ -20,7 +20,7 @@ function Editor() {
     } else {
       window.event.returnValue == false;
     }
-    drag(componentIndex, e);
+    mouseComponent(componentIndex, e);
   }
   return (
     <div styleName="editor">

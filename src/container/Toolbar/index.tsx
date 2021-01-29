@@ -5,6 +5,7 @@ import Font from './components/Font';
 import Code from './components/Code';
 import Layout from './components/Layout';
 import Content from './components/Content';
+import MyEmpty from '@components/Base/MyEmpty';
 import MyScrollBox from '@components/Base/MyScrollBox';
 import useEditorStoreModel from '@store/editor';
 import * as StyleType from '@common/types/domStyle';
@@ -26,15 +27,19 @@ function Toolbar() {
   const height = document.body.clientHeight;
 
   const ToolbarMemo = useMemo(() => {
-    return (
-      <MyScrollBox maxHeight={height}>
-        <Layout styles={currentEditorComponent?.style || {}} onUpdateStyles={onUpdateStyles} />
-        <Fill styles={currentEditorComponent?.style || {}} onUpdateStyles={onUpdateStyles} />
-        <Font styles={currentEditorComponent?.style || {}} onUpdateStyles={onUpdateStyles} />
-        <Content />
-        <Code />
-      </MyScrollBox>
-    );
+    if (currentEditorComponent) {
+      return (
+        <MyScrollBox maxHeight={height}>
+          <Layout styles={currentEditorComponent?.style || {}} onUpdateStyles={onUpdateStyles} />
+          <Fill styles={currentEditorComponent?.style || {}} onUpdateStyles={onUpdateStyles} />
+          <Font styles={currentEditorComponent?.style || {}} onUpdateStyles={onUpdateStyles} />
+          <Content />
+          <Code />
+        </MyScrollBox>
+      );
+    } else {
+      return <MyEmpty full={false} description="暂无选中组件" />;
+    }
   }, [currentEditorComponent]);
 
   return <div styleName="toolbar">{ToolbarMemo}</div>;

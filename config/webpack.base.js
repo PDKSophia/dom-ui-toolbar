@@ -4,6 +4,7 @@ module.exports = {
   resolve: {
     alias: {
       '@model': path.resolve(__dirname, '../src/model/'),
+      '@assets': path.resolve(__dirname, '../src/assets/'),
       '@store': path.resolve(__dirname, '../src/store/'),
       '@hooks': path.resolve(__dirname, '../src/hooks/'),
       '@common': path.resolve(__dirname, '../src/common/'),

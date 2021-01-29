@@ -37,6 +37,13 @@ function useEditorStoreModel() {
    */
   const dispatchClearTotalComponentAction = () => setEditorComponentList([]);
   /**
+   * 释放当前选中的组件
+   */
+  const dispatchClearCurrentComponentAction = () => {
+    setCurrentEditorComponentIndex(-1);
+    setCurrentEditorComponent(null);
+  };
+  /**
    * 画布内移动组件，动态修改坐标位置
    */
   const dispatchUpdateComponentPositionAction = (componentIndex: number, componentStyles?: StyleType.IDomStyleType) => {
@@ -69,6 +76,7 @@ function useEditorStoreModel() {
     currentEditorComponent,
     dispatchAddComponentAction,
     dispatchClearTotalComponentAction,
+    dispatchClearCurrentComponentAction,
     dispatchUpdateComponentPositionAction,
     dispatchSetCurrentEditorComponentAction,
     dispatchUpdateComponentStylesAction

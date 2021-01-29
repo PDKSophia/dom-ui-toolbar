@@ -10,7 +10,12 @@ import useMouseEventHook from '@hooks/useMouseEventHook';
 import { stopPropagation } from '@common/utils';
 
 function Editor() {
-  const { editorComponentList, dispatchSetCurrentEditorComponentAction } = useEditorStoreModel();
+  const {
+    editorComponentList,
+    dispatchClearCurrentComponentAction,
+    dispatchSetCurrentEditorComponentAction
+  } = useEditorStoreModel();
+
   const mouseComponentInEditor = useMouseEventHook();
 
   function handleOnMouseDown(e: React.MouseEvent, componentIndex: number) {
@@ -18,14 +23,19 @@ function Editor() {
     mouseComponentInEditor(componentIndex, e);
   }
 
-  function handleOnClick(e: React.MouseEvent, componentIndex: number) {
+  function handleOnComponentClick(e: React.MouseEvent, componentIndex: number) {
     stopPropagation(e);
     // 选中当前的组件
     dispatchSetCurrentEditorComponentAction(componentIndex);
   }
 
+  // 点击画布空白区域
+  function handleUnComponentAreaClick(e: React.MouseEvent) {
+    stopPropagation(e);
+    dispatchClearCurrentComponentAction();
+  }
   return (
-    <div styleName="editor">
+    <div styleName="editor" onMouseDown={handleUnComponentAreaClick}>
       {editorComponentList.length > 0 &&
         editorComponentList.map((EditComponent: Types.IStoreComponentProps, componentIndex: number) => {
           return (
@@ -42,7 +52,7 @@ function Editor() {
                 handleOnMouseDown(e, componentIndex);
               }}
               onClick={(e: React.MouseEvent) => {
-                handleOnClick(e, componentIndex);
+                handleOnComponentClick(e, componentIndex);
               }}
             >
               {EditComponent.componentInstance && (

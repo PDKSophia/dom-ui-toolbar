@@ -46,7 +46,10 @@ function Editor() {
               }}
             >
               {EditComponent.componentInstance && (
-                <EditComponent.componentInstance key={EditComponent.componentId} style={EditComponent.style} />
+                <EditComponent.componentInstance
+                  componentKey={EditComponent.componentId}
+                  componentStyles={EditComponent.style}
+                />
               )}
             </div>
           );

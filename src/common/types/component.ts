@@ -1,6 +1,8 @@
 import { IDomStyleType } from './domStyle';
 // 拖拽
 export interface IDragProps {
+  componentKey?: string;
+  componentStyles?: IDomStyleType;
   draggable: boolean;
   onDragStart: (e: React.DragEvent<HTMLDivElement>, componentRefs?: HTMLDivElement) => void;
 }

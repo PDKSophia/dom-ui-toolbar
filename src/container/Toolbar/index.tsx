@@ -17,9 +17,9 @@ import * as StyleType from '@common/types/domStyle';
 function Toolbar() {
   const { currentEditorComponent, dispatchUpdateComponentStylesAction } = useEditorStoreModel();
 
-  const onUpdateStyles = (componentStyle: StyleType.IDomStyleType) => {
+  const onUpdateStyles = (componentStyles: StyleType.IDomStyleType) => {
     if (currentEditorComponent) {
-      dispatchUpdateComponentStylesAction(componentStyle);
+      dispatchUpdateComponentStylesAction(componentStyles);
     }
   };
 

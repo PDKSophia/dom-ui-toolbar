@@ -28,16 +28,17 @@ export function formatRgbaTo16Color(color: string) {
  * @param {String} value
  * @returns {Number}
  */
-export function transformStringToNumber(value: String): number {
+export function transformStringToNumber(value: string): number {
   return Number(value);
 }
 
 /**
  * 剔除px
  */
-export function reducePX(value: String): String {
+export function reducePX(value: string | number): string {
   if (!value) return '';
-  return value.replace('px', '');
+  const _value = String(value);
+  return _value.replace('px', '');
 }
 
 /**

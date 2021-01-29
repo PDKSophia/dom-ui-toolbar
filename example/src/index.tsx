@@ -17,7 +17,7 @@ function Main() {
         <WinCenter />
       </div>
       <div ref={toolbarRef} styleName="action">
-        <Toolbar dom={null} onChangeStyle={() => {}} />
+        <Toolbar />
       </div>
     </>
   );

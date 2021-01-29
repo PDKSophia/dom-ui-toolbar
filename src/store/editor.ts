@@ -48,9 +48,20 @@ function useEditorStoreModel() {
   /**
    * 选中当前组件，记录当前组件
    */
-  const dispatchChooseCurrentEditorComponent = (componentIndex: number) => {
+  const dispatchSetCurrentEditorComponentAction = (componentIndex: number) => {
     setCurrentEditorComponentIndex(componentIndex);
     setCurrentEditorComponent(editorComponentList[componentIndex]);
+  };
+  /**
+   * 更新组件样式
+   * @param componentStyles 新样式
+   */
+  const dispatchUpdateComponentStylesAction = (componentStyles: StyleType.IDomStyleType) => {
+    const nextStore = cloneDeep(editorComponentList);
+    const updateComponent = { ...nextStore[currentEditorComponentIndex], style: { ...componentStyles } };
+    nextStore[currentEditorComponentIndex] = updateComponent;
+    setEditorComponentList(nextStore);
+    setCurrentEditorComponent(updateComponent);
   };
   return {
     editorComponentList,
@@ -59,7 +70,8 @@ function useEditorStoreModel() {
     dispatchAddComponentAction,
     dispatchClearTotalComponentAction,
     dispatchUpdateComponentPositionAction,
-    dispatchChooseCurrentEditorComponent
+    dispatchSetCurrentEditorComponentAction,
+    dispatchUpdateComponentStylesAction
   };
 }
 

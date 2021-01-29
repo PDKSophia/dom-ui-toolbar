@@ -1,46 +1,41 @@
-import React, { useEffect, useState } from 'react';
+import React, { useMemo } from 'react';
 import './index.less';
-import { getDomStyles } from '@common/utils';
 import Fill from './components/Fill';
 import Font from './components/Font';
 import Code from './components/Code';
 import Layout from './components/Layout';
 import Content from './components/Content';
 import MyScrollBox from '@components/Base/MyScrollBox';
+import useEditorStoreModel from '@store/editor';
+import * as StyleType from '@common/types/domStyle';
 
-interface IProps {
-  dom: any;
-  onChangeStyle: (newStyle: any) => void;
-}
-function Toolbar({ dom, onChangeStyle }: IProps) {
-  const [fillRectStyle, setFillRectStyle] = useState(null);
-  const [fontRectStyle, setFontRectStyle] = useState(null);
-  const [layoutRectStyle, setLayoutRectStyle] = useState(null);
-  const [contentRectStyle, setContentRectStyle] = useState(null);
+/**
+ * 组件工具条入口文件，决定通过Props方式给各组件进行通信，从而修改style
+ * 不通过各组件直接连store去修改style，原因在于：跟业务不要太耦合
+ * 每个组件只需要传style和onChangeStyle，在入口文件统一做修改store操作
+ */
+function Toolbar() {
+  const { currentEditorComponent, dispatchUpdateComponentStylesAction } = useEditorStoreModel();
 
-  useEffect(() => {
-    if (dom) {
-      // const fillModelStyles = getDomStyles(dom, FillModel);
-      // setFillRectStyle(fillModelStyles);
-      // const fontModelStyles = getDomStyles(dom, FontModel);
-      // setFontRectStyle(fontModelStyles);
-      // const layoutModelStyles = getDomStyles(dom, LayoutModel);
-      // setLayoutRectStyle(layoutModelStyles);
-    }
-  }, [dom]);
+  const onUpdateStyles = (componentStyle: StyleType.IDomStyleType) => {
+    dispatchUpdateComponentStylesAction(componentStyle);
+  };
 
   const height = document.body.clientHeight;
-  return (
-    <div styleName="toolbar">
+
+  const ToolbarMemo = useMemo(() => {
+    return (
       <MyScrollBox maxHeight={height}>
-        <Layout style={layoutRectStyle} onChangeStyle={onChangeStyle} />
-        <Fill />
-        <Font />
+        <Layout styles={currentEditorComponent?.style || {}} onUpdateStyles={onUpdateStyles} />
+        <Fill styles={currentEditorComponent?.style || {}} onUpdateStyles={onUpdateStyles} />
+        <Font styles={currentEditorComponent?.style || {}} onUpdateStyles={onUpdateStyles} />
         <Content />
         <Code />
       </MyScrollBox>
-    </div>
-  );
+    );
+  }, [currentEditorComponent]);
+
+  return <div styleName="toolbar">{ToolbarMemo}</div>;
 }
 
 export default Toolbar;

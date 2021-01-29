@@ -15,3 +15,5 @@ export const PC_SIZE = {
     HEIGHT: 630
   }
 };
+
+export const DEFAULT_COLOR = '#000000';

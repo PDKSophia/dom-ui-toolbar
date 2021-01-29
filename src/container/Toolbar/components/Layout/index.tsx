@@ -1,19 +1,21 @@
 /**
  * @desc Layout 区域模块
  */
-import React, { useEffect } from 'react';
+import React from 'react';
 import './index.less';
 import Desc from '@components/Toolbar/Desc';
 import Title from '@components/Toolbar/Title';
 import Label from '@components/Toolbar/Label';
 import NumberInputOperator from '@components/Design/NumberInputOperator';
 import { reducePX, transformStringToNumber } from '@common/utils/getDomStyle';
+import * as StyleType from '@common/types/domStyle';
 
-function Layout({ style, onChangeStyle }) {
-  useEffect(() => {
-    console.log(style);
-  }, [style]);
+interface IProps {
+  styles: StyleType.IDomStyleType;
+  onUpdateStyles: (componentStyles: StyleType.IDomStyleType) => void;
+}
 
+function Layout({ styles, onUpdateStyles }: IProps) {
   return (
     <div styleName="layout">
       <Title text="布局" />
@@ -21,17 +23,27 @@ function Layout({ style, onChangeStyle }) {
         <Label label="大小(px)" />
         <div styleName="wrapper">
           <NumberInputOperator
-            defaultNum={style ? transformStringToNumber(reducePX(style.width)) : 0}
+            defaultNum={styles ? transformStringToNumber(reducePX(styles.width)) : 0}
             minNum={0}
             maxNum={1000}
             onNumberChang={(num: number) => {
-              onChangeStyle({
-                ...style,
+              onUpdateStyles({
+                ...styles,
                 width: `${num}px`
               });
             }}
           />
-          <NumberInputOperator defaultNum={500} minNum={1} maxNum={999} onNumberChang={(num: number) => {}} />
+          <NumberInputOperator
+            defaultNum={styles ? transformStringToNumber(reducePX(styles.height)) : 0}
+            minNum={1}
+            maxNum={999}
+            onNumberChang={(num: number) => {
+              onUpdateStyles({
+                ...styles,
+                height: `${num}px`
+              });
+            }}
+          />
         </div>
         <div styleName="desc">
           <Desc desc={['宽度', '高度']} />
@@ -40,7 +52,17 @@ function Layout({ style, onChangeStyle }) {
       <div styleName="box">
         <Label label="圆角(px)" />
         <div styleName="wrapper">
-          <NumberInputOperator defaultNum={4} minNum={0} maxNum={1000} onNumberChang={(num: number) => {}} />
+          <NumberInputOperator
+            defaultNum={styles ? transformStringToNumber(reducePX(styles.borderRadius)) : 0}
+            minNum={0}
+            maxNum={1000}
+            onNumberChang={(num: number) => {
+              onUpdateStyles({
+                ...styles,
+                borderRadius: `${num}px`
+              });
+            }}
+          />
         </div>
       </div>
     </div>

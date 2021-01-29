@@ -24,6 +24,23 @@ export function formatRgbaTo16Color(color: string) {
 }
 
 /**
+ * 将字符串数字转成整型数字
+ * @param {String} value
+ * @returns {Number}
+ */
+export function transformStringToNumber(value: String): number {
+  return Number(value);
+}
+
+/**
+ * 剔除px
+ */
+export function reducePX(value: String): String {
+  if (!value) return '';
+  return value.replace('px', '');
+}
+
+/**
  * 根据DOM获取该元素所有style属性，通过数据模型得到需要的属性
  * @param dom 点击触发的DOM元素
  * @param dataStyles 数据模型中的属性

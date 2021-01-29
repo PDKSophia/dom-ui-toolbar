@@ -7,20 +7,21 @@ import './index.less';
 import * as Types from '@common/types/component';
 import useEditorStoreModel from '@store/editor';
 import useMouseEventHook from '@hooks/useMouseEventHook';
+import { stopPropagation } from '@common/utils';
 
 function Editor() {
-  const { editorComponentList } = useEditorStoreModel();
-  const mouseComponent = useMouseEventHook();
+  const { editorComponentList, dispatchChooseCurrentEditorComponent } = useEditorStoreModel();
+  const mouseComponentInEditor = useMouseEventHook();
 
   function handleOnMouseDown(e: React.MouseEvent, componentIndex: number) {
-    if (e.stopPropagation) {
-      e.stopPropagation();
-    } else if (e.preventDefault) {
-      e.preventDefault();
-    } else {
-      window.event.returnValue == false;
-    }
-    mouseComponent(componentIndex, e);
+    stopPropagation(e);
+    mouseComponentInEditor(componentIndex, e);
+  }
+
+  function handleOnClick(e: React.MouseEvent, componentIndex: number) {
+    stopPropagation(e);
+    // 选中当前的组件
+    dispatchChooseCurrentEditorComponent(componentIndex);
   }
 
   return (
@@ -39,6 +40,9 @@ function Editor() {
               }}
               onMouseDown={(e: React.MouseEvent) => {
                 handleOnMouseDown(e, componentIndex);
+              }}
+              onClick={(e: React.MouseEvent) => {
+                handleOnClick(e, componentIndex);
               }}
             >
               {EditComponent.componentInstance && <EditComponent.componentInstance key={EditComponent.componentId} />}

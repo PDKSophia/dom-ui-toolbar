@@ -10,3 +10,13 @@ export function createUUid() {
     })
     .toUpperCase();
 }
+
+export function stopPropagation(e: React.MouseEvent): any {
+  if (e.stopPropagation) {
+    e.stopPropagation();
+  } else if (e.preventDefault) {
+    e.preventDefault();
+  } else {
+    window.event.returnValue == false;
+  }
+}

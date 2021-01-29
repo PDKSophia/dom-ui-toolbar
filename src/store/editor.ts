@@ -10,7 +10,8 @@ import * as ComponentType from '@common/types/component';
 import * as ComponentsList from '@container/Material/components';
 
 function useEditorStoreModel() {
-  const [currentComponent, setCurrentComponent] = useState<ComponentType.IStoreComponentProps>(); // 画布当前选中的组件
+  const [currentEditorComponentIndex, setCurrentEditorComponentIndex] = useState<number>(-1); // 画布当前选中的组件下标
+  const [currentEditorComponent, setCurrentEditorComponent] = useState<ComponentType.IStoreComponentProps>(); // 画布当前选中的组件
   const [editorComponentList, setEditorComponentList] = useState<ComponentType.IStoreComponentProps[]>([]); // 画布中的组件列表
 
   /**
@@ -44,11 +45,21 @@ function useEditorStoreModel() {
     prevStore[componentIndex] = moveComponent;
     setEditorComponentList(prevStore);
   };
+  /**
+   * 选中当前组件，记录当前组件
+   */
+  const dispatchChooseCurrentEditorComponent = (componentIndex: number) => {
+    setCurrentEditorComponentIndex(componentIndex);
+    setCurrentEditorComponent(editorComponentList[componentIndex]);
+  };
   return {
     editorComponentList,
+    currentEditorComponentIndex,
+    currentEditorComponent,
     dispatchAddComponentAction,
     dispatchClearTotalComponentAction,
-    dispatchUpdateComponentPositionAction
+    dispatchUpdateComponentPositionAction,
+    dispatchChooseCurrentEditorComponent
   };
 }
 

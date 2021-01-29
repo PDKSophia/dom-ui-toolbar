@@ -18,7 +18,9 @@ function Toolbar() {
   const { currentEditorComponent, dispatchUpdateComponentStylesAction } = useEditorStoreModel();
 
   const onUpdateStyles = (componentStyle: StyleType.IDomStyleType) => {
-    dispatchUpdateComponentStylesAction(componentStyle);
+    if (currentEditorComponent) {
+      dispatchUpdateComponentStylesAction(componentStyle);
+    }
   };
 
   const height = document.body.clientHeight;

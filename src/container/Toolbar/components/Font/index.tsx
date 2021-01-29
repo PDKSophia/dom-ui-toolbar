@@ -86,10 +86,16 @@ function Font({ styles, onUpdateStyles }: IProps) {
       <div styleName="box">
         <Label label="颜色" />
         <div styleName="wrapper">
-          <Input value={styles ? styles.color : DEFAULT_COLOR} onChange={onPickFontColor} onBlur={onFontColorBlur} />
+          <Input
+            defaultValue={DEFAULT_COLOR}
+            value={styles ? styles.color : DEFAULT_COLOR}
+            onChange={onPickFontColor}
+            onBlur={onFontColorBlur}
+          />
           <div styleName="colorFill">
             <Input
               type="color"
+              defaultValue={DEFAULT_COLOR}
               value={styles ? styles.color : DEFAULT_COLOR}
               onChange={onPickFontColor}
               iClassName="color-input"

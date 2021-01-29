@@ -49,8 +49,6 @@ function Fill({ styles, onUpdateStyles }: IProps) {
     });
   };
 
-  console.log('@', styles ? styles.backgroundColor : DEFAULT_COLOR);
-
   return (
     <div styleName="fill">
       <Title text="填充" />

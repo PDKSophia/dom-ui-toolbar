@@ -39,14 +39,16 @@ function Toolbar() {
         <MyScrollBox maxHeight={height}>
           <Layout styles={currentEditorComponent?.style || {}} onUpdateStyles={onUpdateStyles} />
           <Fill styles={currentEditorComponent?.style || {}} onUpdateStyles={onUpdateStyles} />
-          <Font styles={currentEditorComponent?.style || {}} onUpdateStyles={onUpdateStyles} />
+          {ResourceContentList.includes(currentEditorComponent.componentName) && (
+            <Font styles={currentEditorComponent?.style || {}} onUpdateStyles={onUpdateStyles} />
+          )}
           {ResourceContentList.includes(currentEditorComponent.componentName) && (
             <Content
               componentInnerText={currentEditorComponent?.componentInnerText || ''}
               onUpdateInnerText={onUpdateInnerText}
             />
           )}
-          <Code />
+          {currentEditorComponent?.style && <Code styles={currentEditorComponent?.style} />}
         </MyScrollBox>
       );
     } else {

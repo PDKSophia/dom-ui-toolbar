@@ -20,12 +20,12 @@ export interface IStoreComponentProps {
 export interface IToolbarLayoutProps {
   width?: number | string;
   height?: number | string;
-  borderRadius?: number | string;
 }
 export interface IToolbarFillProps {
   backgroundColor?: string;
   borderWidth?: number | string;
   borderColor?: string;
+  borderRadius?: number | string;
 }
 export interface IToolbarFontProps {
   fontSize?: number | string;

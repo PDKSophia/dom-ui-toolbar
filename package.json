@@ -70,6 +70,7 @@
   },
   "dependencies": {
     "@types/hoist-non-react-statics": "^3.3.1",
+    "@types/lodash": "^4.14.168",
     "@types/react-css-modules": "^4.6.2",
     "@types/react-reconciler": "^0.18.0",
     "antd": "^4.7.2",

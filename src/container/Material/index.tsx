@@ -2,8 +2,8 @@ import React from 'react';
 import './index.less';
 import * as ComponentsList from './components';
 import MyScrollBox from '@components/Base/MyScrollBox';
-import getDomStyle from '@common/utils/getDomStyle';
-import { initComponentDomStyleStore } from '@store/initStore';
+import getDomStyle from '@common/utils/dom';
+import { initComponentStyleStore } from '@store/initStore';
 
 function Material() {
   const height = document.body.clientHeight;
@@ -23,7 +23,11 @@ function Material() {
                   onDragStart={(e: React.DragEvent<HTMLDivElement>, componentRefs?: HTMLDivElement) => {
                     e.dataTransfer.setData('componentName', componentName);
                     if (componentRefs) {
-                      const styles = getDomStyle(componentRefs, initComponentDomStyleStore);
+                      const componentStore = {
+                        ...initComponentStyleStore.Base,
+                        ...initComponentStyleStore[componentName]
+                      };
+                      const styles = getDomStyle(componentRefs, componentStore);
                       e.dataTransfer.setData('componentInnerText', componentRefs.innerText);
                       e.dataTransfer.setData('componentDomStyle', JSON.stringify(styles));
                     }

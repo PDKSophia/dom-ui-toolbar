@@ -1,3 +1,4 @@
+import _ from 'lodash';
 /**
  * @description 将 rgba 颜色转换成 16 进制颜色
  */
@@ -39,6 +40,14 @@ export function reducePX(value: string | number): string {
   return _value.replace('px', '');
 }
 
+// 返回对象不存在[props]的属性值
+export function omitStyle(styles: React.CSSProperties, props: string[]) {
+  return _.omit(styles, props);
+}
+// 返回对象[props]的属性值
+export function pickStyle(styles: React.CSSProperties, props: string[]) {
+  return _.pick(styles, props);
+}
 /**
  * 根据DOM获取该元素所有style属性，通过数据模型得到需要的属性
  * @param dom 点击触发的DOM元素

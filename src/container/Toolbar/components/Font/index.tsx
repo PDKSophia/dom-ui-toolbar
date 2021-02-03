@@ -8,7 +8,7 @@ import Label from '@components/Toolbar/Label';
 import Input from '@components/Design/Input';
 import NumberInputOperator from '@components/Design/NumberInputOperator';
 import Desc from '@components/Toolbar/Desc';
-import { reducePX, transformStringToNumber } from '@common/utils/getDomStyle';
+import { reducePX, transformStringToNumber } from '@common/utils/dom';
 import { DEFAULT_COLOR } from '@common/constant';
 import { IToolbarFontProps } from '@common/types/component';
 

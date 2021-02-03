@@ -7,7 +7,7 @@ import Title from '@components/Toolbar/Title';
 import Label from '@components/Toolbar/Label';
 import Input from '@components/Design/Input';
 import NumberInputOperator from '@components/Design/NumberInputOperator';
-import { reducePX, transformStringToNumber } from '@common/utils/getDomStyle';
+import { reducePX, transformStringToNumber } from '@common/utils/dom';
 import { DEFAULT_COLOR } from '@common/constant';
 import { IToolbarFillProps } from '@common/types/component';
 
@@ -83,6 +83,22 @@ function Fill({ styles, onUpdateStyles }: IProps) {
               onUpdateStyles({
                 ...styles,
                 borderWidth: `${num}px`
+              });
+            }}
+          />
+        </div>
+      </div>
+      <div styleName="box">
+        <Label label="圆角(px)" />
+        <div styleName="wrapper">
+          <NumberInputOperator
+            defaultNum={styles ? transformStringToNumber(reducePX(styles.borderRadius)) : 0}
+            minNum={0}
+            maxNum={1000}
+            onNumberChang={(num: number) => {
+              onUpdateStyles({
+                ...styles,
+                borderRadius: `${num}px`
               });
             }}
           />

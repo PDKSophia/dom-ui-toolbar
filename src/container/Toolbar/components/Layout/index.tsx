@@ -7,7 +7,7 @@ import Desc from '@components/Toolbar/Desc';
 import Title from '@components/Toolbar/Title';
 import Label from '@components/Toolbar/Label';
 import NumberInputOperator from '@components/Design/NumberInputOperator';
-import { reducePX, transformStringToNumber } from '@common/utils/getDomStyle';
+import { reducePX, transformStringToNumber } from '@common/utils/dom';
 import { IToolbarLayoutProps } from '@common/types/component';
 
 interface IProps {
@@ -47,22 +47,6 @@ function Layout({ styles, onUpdateStyles }: IProps) {
         </div>
         <div styleName="desc">
           <Desc desc={['宽度', '高度']} />
-        </div>
-      </div>
-      <div styleName="box">
-        <Label label="圆角(px)" />
-        <div styleName="wrapper">
-          <NumberInputOperator
-            defaultNum={styles ? transformStringToNumber(reducePX(styles.borderRadius)) : 0}
-            minNum={0}
-            maxNum={1000}
-            onNumberChang={(num: number) => {
-              onUpdateStyles({
-                ...styles,
-                borderRadius: `${num}px`
-              });
-            }}
-          />
         </div>
       </div>
     </div>

@@ -37,7 +37,6 @@ function WinCenter() {
             ...componentDomStyle,
             left: e.nativeEvent.offsetX,
             top: e.nativeEvent.offsetY,
-            cursor: 'default',
             zIndex: editorComponentList.length
           });
         }}

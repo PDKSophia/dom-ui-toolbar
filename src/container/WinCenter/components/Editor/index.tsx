@@ -8,6 +8,7 @@ import * as Types from '@common/types/component';
 import useEditorStoreModel from '@store/editor';
 import useMouseEventHook from '@hooks/useMouseEventHook';
 import { stopPropagation } from '@common/utils';
+import { omitStyle, pickStyle } from '@common/utils/dom';
 
 function Editor() {
   const {
@@ -42,12 +43,7 @@ function Editor() {
             <div
               styleName="wrapper-component"
               key={EditComponent.componentId}
-              style={{
-                left: EditComponent?.style?.left || 0,
-                top: EditComponent?.style?.top || 0,
-                zIndex: EditComponent?.style?.zIndex || 0,
-                cursor: EditComponent?.style?.cursor || 'default'
-              }}
+              style={pickStyle(EditComponent.style, ['left', 'top', 'zIndex', 'cursor'])}
               onMouseDown={(e: React.MouseEvent) => {
                 handleOnMouseDown(e, componentIndex);
               }}
@@ -58,8 +54,8 @@ function Editor() {
               {EditComponent.componentInstance && (
                 <EditComponent.componentInstance
                   componentKey={EditComponent.componentId}
-                  componentStyles={EditComponent.style}
                   componentInnerText={EditComponent.componentInnerText}
+                  componentStyles={omitStyle(EditComponent.style, ['left', 'top', 'zIndex', 'cursor'])}
                 />
               )}
             </div>

@@ -1,6 +1,4 @@
-import * as StyleType from '@common/types/domStyle';
-
-export const initComponentDomStyleStore: StyleType.IDomStyleType = {
+export const initComponentDomStyleStore: React.CSSProperties = {
   opacity: 1,
   width: 0,
   height: 0,

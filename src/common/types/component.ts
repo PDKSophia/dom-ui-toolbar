@@ -1,9 +1,8 @@
-import { IDomStyleType } from './domStyle';
 // 拖拽
 export interface IDragProps {
-  componentKey?: string;
-  componentStyles?: IDomStyleType;
   draggable: boolean;
+  componentKey?: string;
+  componentStyles?: React.CSSProperties;
   onDragStart: (e: React.DragEvent<HTMLDivElement>, componentRefs?: HTMLDivElement) => void;
 }
 
@@ -11,5 +10,5 @@ export interface IDragProps {
 export interface IStoreComponentProps {
   componentId: string; // 组件id
   componentInstance: any; // 组件实例
-  style: IDomStyleType; // 组件样式
+  style: React.CSSProperties; // 组件样式
 }

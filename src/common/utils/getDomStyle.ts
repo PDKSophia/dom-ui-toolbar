@@ -1,5 +1,3 @@
-import * as Types from '@common/types/domStyle';
-
 /**
  * @description 将 rgba 颜色转换成 16 进制颜色
  */
@@ -48,14 +46,13 @@ export function reducePX(value: string | number): string {
  */
 function getDomStyle(
   dom: HTMLDivElement,
-  dataStyles: Types.IDomStyleType
+  dataStyles: React.CSSProperties
 ): {
   [key: string]: any;
 } {
   if (dom) {
-    let resultStyle: Types.IDomStyleType = {};
+    let resultStyle: React.CSSProperties = {};
     const computedStyle = window.getComputedStyle(dom);
-
     Object.keys(dataStyles).forEach((styleName: string) => {
       if (!resultStyle[styleName]) {
         const styleValue = computedStyle[styleName];

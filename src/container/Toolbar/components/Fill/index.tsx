@@ -8,12 +8,11 @@ import Label from '@components/Toolbar/Label';
 import Input from '@components/Design/Input';
 import NumberInputOperator from '@components/Design/NumberInputOperator';
 import { reducePX, transformStringToNumber } from '@common/utils/getDomStyle';
-import * as StyleType from '@common/types/domStyle';
 import { DEFAULT_COLOR } from '@common/constant';
 
 interface IProps {
-  styles: StyleType.IDomStyleType;
-  onUpdateStyles: (componentStyles: StyleType.IDomStyleType) => void;
+  styles: React.CSSProperties;
+  onUpdateStyles: (componentStyles: React.CSSProperties) => void;
 }
 
 function Fill({ styles, onUpdateStyles }: IProps) {

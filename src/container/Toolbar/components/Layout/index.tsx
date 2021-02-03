@@ -11,8 +11,8 @@ import { reducePX, transformStringToNumber } from '@common/utils/getDomStyle';
 import * as StyleType from '@common/types/domStyle';
 
 interface IProps {
-  styles: StyleType.IDomStyleType;
-  onUpdateStyles: (componentStyles: StyleType.IDomStyleType) => void;
+  styles: React.CSSProperties;
+  onUpdateStyles: (componentStyles: React.CSSProperties) => void;
 }
 
 function Layout({ styles, onUpdateStyles }: IProps) {

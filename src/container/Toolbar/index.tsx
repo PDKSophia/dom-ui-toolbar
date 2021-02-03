@@ -8,7 +8,6 @@ import Content from './components/Content';
 import MyEmpty from '@components/Base/MyEmpty';
 import MyScrollBox from '@components/Base/MyScrollBox';
 import useEditorStoreModel from '@store/editor';
-import * as StyleType from '@common/types/domStyle';
 
 /**
  * 组件工具条入口文件，决定通过Props方式给各组件进行通信，从而修改style
@@ -18,7 +17,7 @@ import * as StyleType from '@common/types/domStyle';
 function Toolbar() {
   const { currentEditorComponent, dispatchUpdateComponentStylesAction } = useEditorStoreModel();
 
-  const onUpdateStyles = (componentStyles: StyleType.IDomStyleType) => {
+  const onUpdateStyles = (componentStyles: React.CSSProperties) => {
     if (currentEditorComponent) {
       dispatchUpdateComponentStylesAction(componentStyles);
     }

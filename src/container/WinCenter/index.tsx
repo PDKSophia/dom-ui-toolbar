@@ -7,7 +7,6 @@ import Header from './components/Header';
 import Editor from './components/Editor';
 import useEditorStoreModel from '@store/editor';
 import useScreenSizeModel from '@store/screenSize';
-import { IDomStyleType } from '@common/types/domStyle';
 
 function WinCenter() {
   const { selectPcSize } = useScreenSizeModel();
@@ -27,7 +26,7 @@ function WinCenter() {
           e.preventDefault();
           e.stopPropagation();
           const componentName = e.dataTransfer.getData('ComponentName');
-          let componentDomStyle: IDomStyleType = {};
+          let componentDomStyle: React.CSSProperties = {};
           try {
             componentDomStyle = JSON.parse(e.dataTransfer.getData('componentDomStyle'));
           } catch (err) {

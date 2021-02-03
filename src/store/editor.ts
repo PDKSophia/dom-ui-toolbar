@@ -5,7 +5,6 @@ import { cloneDeep } from 'lodash';
 import { useState } from 'react';
 import _ from 'sugar-hox-devtools';
 import { createUUid } from '@common/utils';
-import * as StyleType from '@common/types/domStyle';
 import * as ComponentType from '@common/types/component';
 import * as ComponentsList from '@container/Material/components';
 
@@ -22,7 +21,7 @@ function useEditorStoreModel() {
    * @param componentName 组件名
    * @param componentStyles 组件自定义样式
    */
-  const dispatchAddComponentAction = (componentName: string, componentStyles?: StyleType.IDomStyleType) => {
+  const dispatchAddComponentAction = (componentName: string, componentStyles?: React.CSSProperties) => {
     const componentInstance = ComponentsList[componentName];
     let prevStore = cloneDeep(editorComponentList);
     prevStore.push({
@@ -46,7 +45,7 @@ function useEditorStoreModel() {
   /**
    * 画布内移动组件，动态修改坐标位置
    */
-  const dispatchUpdateComponentPositionAction = (componentIndex: number, componentStyles?: StyleType.IDomStyleType) => {
+  const dispatchUpdateComponentPositionAction = (componentIndex: number, componentStyles?: React.CSSProperties) => {
     const prevStore = cloneDeep(editorComponentList);
     const moveComponent = { ...prevStore[componentIndex], style: { ...componentStyles } };
     prevStore[componentIndex] = moveComponent;
@@ -63,7 +62,7 @@ function useEditorStoreModel() {
    * 更新组件样式
    * @param componentStyles 新样式
    */
-  const dispatchUpdateComponentStylesAction = (componentStyles: StyleType.IDomStyleType) => {
+  const dispatchUpdateComponentStylesAction = (componentStyles: React.CSSProperties) => {
     const nextStore = cloneDeep(editorComponentList);
     const updateComponent = { ...nextStore[currentEditorComponentIndex], style: { ...componentStyles } };
     nextStore[currentEditorComponentIndex] = updateComponent;

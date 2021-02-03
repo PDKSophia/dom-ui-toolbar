@@ -59,6 +59,7 @@ function Editor() {
                 <EditComponent.componentInstance
                   componentKey={EditComponent.componentId}
                   componentStyles={EditComponent.style}
+                  componentInnerText={EditComponent.componentInnerText}
                 />
               )}
             </div>

@@ -25,14 +25,15 @@ function WinCenter() {
         onDrop={(e: React.DragEvent<HTMLDivElement>) => {
           e.preventDefault();
           e.stopPropagation();
-          const componentName = e.dataTransfer.getData('ComponentName');
+          const componentName = e.dataTransfer.getData('componentName');
+          const componentInnerText = e.dataTransfer.getData('componentInnerText');
           let componentDomStyle: React.CSSProperties = {};
           try {
             componentDomStyle = JSON.parse(e.dataTransfer.getData('componentDomStyle'));
           } catch (err) {
             componentDomStyle = {};
           }
-          dispatchAddComponentAction(componentName, {
+          dispatchAddComponentAction(componentName, componentInnerText, {
             ...componentDomStyle,
             left: e.nativeEvent.offsetX,
             top: e.nativeEvent.offsetY,

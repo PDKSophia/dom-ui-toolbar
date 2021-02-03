@@ -19,14 +19,21 @@ function useEditorStoreModel() {
   /**
    * 添加一个组件
    * @param componentName 组件名
+   * @param componentInnerText 组件文本内容
    * @param componentStyles 组件自定义样式
    */
-  const dispatchAddComponentAction = (componentName: string, componentStyles?: React.CSSProperties) => {
+  const dispatchAddComponentAction = (
+    componentName: string,
+    componentInnerText?: string,
+    componentStyles?: React.CSSProperties
+  ) => {
     const componentInstance = ComponentsList[componentName];
     let prevStore = cloneDeep(editorComponentList);
     prevStore.push({
       componentId: createUUid(),
+      componentName,
       componentInstance,
+      componentInnerText,
       style: componentStyles
     });
     setEditorComponentList(prevStore);
@@ -35,13 +42,6 @@ function useEditorStoreModel() {
    * 清空画布，清除所有组件
    */
   const dispatchClearTotalComponentAction = () => setEditorComponentList([]);
-  /**
-   * 释放当前选中的组件
-   */
-  const dispatchClearCurrentComponentAction = () => {
-    setCurrentEditorComponentIndex(-1);
-    setCurrentEditorComponent(null);
-  };
   /**
    * 画布内移动组件，动态修改坐标位置
    */
@@ -59,12 +59,26 @@ function useEditorStoreModel() {
     setCurrentEditorComponent(editorComponentList[componentIndex]);
   };
   /**
+   * 释放当前选中的组件
+   */
+  const dispatchClearCurrentComponentAction = () => {
+    setCurrentEditorComponentIndex(-1);
+    setCurrentEditorComponent(null);
+  };
+  /**
    * 更新组件样式
    * @param componentStyles 新样式
    */
   const dispatchUpdateComponentStylesAction = (componentStyles: React.CSSProperties) => {
     const nextStore = cloneDeep(editorComponentList);
     const updateComponent = { ...nextStore[currentEditorComponentIndex], style: { ...componentStyles } };
+    nextStore[currentEditorComponentIndex] = updateComponent;
+    setEditorComponentList(nextStore);
+    setCurrentEditorComponent(updateComponent);
+  };
+  const dispatchUpdateComponentInnerTextAction = (innerText: string) => {
+    const nextStore = cloneDeep(editorComponentList);
+    const updateComponent = { ...nextStore[currentEditorComponentIndex], componentInnerText: innerText };
     nextStore[currentEditorComponentIndex] = updateComponent;
     setEditorComponentList(nextStore);
     setCurrentEditorComponent(updateComponent);
@@ -78,7 +92,8 @@ function useEditorStoreModel() {
     dispatchClearCurrentComponentAction,
     dispatchUpdateComponentPositionAction,
     dispatchSetCurrentEditorComponentAction,
-    dispatchUpdateComponentStylesAction
+    dispatchUpdateComponentStylesAction,
+    dispatchUpdateComponentInnerTextAction
   };
 }
 

@@ -21,9 +21,10 @@ function Material() {
                   key={`${componentName}_${index}`}
                   draggable={true}
                   onDragStart={(e: React.DragEvent<HTMLDivElement>, componentRefs?: HTMLDivElement) => {
-                    e.dataTransfer.setData('ComponentName', componentName);
+                    e.dataTransfer.setData('componentName', componentName);
                     if (componentRefs) {
                       const styles = getDomStyle(componentRefs, initComponentDomStyleStore);
+                      e.dataTransfer.setData('componentInnerText', componentRefs.innerText);
                       e.dataTransfer.setData('componentDomStyle', JSON.stringify(styles));
                     }
                   }}

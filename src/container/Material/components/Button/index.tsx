@@ -5,7 +5,7 @@ import React from 'react';
 import './index.less';
 import * as Types from '@common/types/component';
 
-function Button({ componentKey, componentStyles, draggable, onDragStart }: Types.IDragProps) {
+function Button({ componentKey, componentStyles, componentInnerText, draggable, onDragStart }: Types.IDragProps) {
   const componentRefs = React.useRef<HTMLDivElement>();
 
   const getComponentRefs = () => {
@@ -25,7 +25,7 @@ function Button({ componentKey, componentStyles, draggable, onDragStart }: Types
       draggable={draggable}
       onDragStart={onDrag}
     >
-      基础按钮
+      {componentInnerText || '基础按钮'}
     </div>
   );
 }

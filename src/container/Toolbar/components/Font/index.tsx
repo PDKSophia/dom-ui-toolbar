@@ -10,10 +10,11 @@ import NumberInputOperator from '@components/Design/NumberInputOperator';
 import Desc from '@components/Toolbar/Desc';
 import { reducePX, transformStringToNumber } from '@common/utils/getDomStyle';
 import { DEFAULT_COLOR } from '@common/constant';
+import { IToolbarFontProps } from '@common/types/component';
 
 interface IProps {
-  styles: React.CSSProperties;
-  onUpdateStyles: (componentStyles: React.CSSProperties) => void;
+  styles: IToolbarFontProps;
+  onUpdateStyles: (componentStyles: IToolbarFontProps) => void;
 }
 
 function Font({ styles, onUpdateStyles }: IProps) {

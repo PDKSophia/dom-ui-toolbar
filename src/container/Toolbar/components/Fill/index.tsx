@@ -9,10 +9,11 @@ import Input from '@components/Design/Input';
 import NumberInputOperator from '@components/Design/NumberInputOperator';
 import { reducePX, transformStringToNumber } from '@common/utils/getDomStyle';
 import { DEFAULT_COLOR } from '@common/constant';
+import { IToolbarFillProps } from '@common/types/component';
 
 interface IProps {
-  styles: React.CSSProperties;
-  onUpdateStyles: (componentStyles: React.CSSProperties) => void;
+  styles: IToolbarFillProps;
+  onUpdateStyles: (componentStyles: IToolbarFillProps) => void;
 }
 
 function Fill({ styles, onUpdateStyles }: IProps) {

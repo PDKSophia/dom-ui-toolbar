@@ -8,11 +8,11 @@ import Title from '@components/Toolbar/Title';
 import Label from '@components/Toolbar/Label';
 import NumberInputOperator from '@components/Design/NumberInputOperator';
 import { reducePX, transformStringToNumber } from '@common/utils/getDomStyle';
-import * as StyleType from '@common/types/domStyle';
+import { IToolbarLayoutProps } from '@common/types/component';
 
 interface IProps {
-  styles: React.CSSProperties;
-  onUpdateStyles: (componentStyles: React.CSSProperties) => void;
+  styles: IToolbarLayoutProps;
+  onUpdateStyles: (componentStyles: IToolbarLayoutProps) => void;
 }
 
 function Layout({ styles, onUpdateStyles }: IProps) {

@@ -7,14 +7,18 @@ import Title from '@components/Toolbar/Title';
 import Label from '@components/Toolbar/Label';
 import Textarea from '@components/Design/Textarea';
 
-class Content extends React.Component {
+interface IProps {
+  componentInnerText?: string;
+  onUpdateInnerText?: (text: string) => void;
+}
+class Content extends React.Component<IProps> {
   render() {
     return (
       <div styleName="content">
         <Title text="信息" />
         <div styleName="box">
           <Label label="内容" />
-          <Textarea value="艾宾斯浩遗忘曲线告诉我们：人类大脑对新事物的遗忘是有规律的。而人们恰恰可以从遗忘曲线中找到记忆规律。科学的周期，将帮助你规律复习，高质量备考。" />
+          <Textarea defaultValue="" value={this.props.componentInnerText} onChange={this.props.onUpdateInnerText} />
         </div>
       </div>
     );

@@ -5,7 +5,7 @@ import React from 'react';
 import './index.less';
 import * as Types from '@common/types/component';
 
-function Text({ componentKey, componentStyles, draggable, onDragStart }: Types.IDragProps) {
+function Text({ componentKey, componentStyles, draggable, componentInnerText, onDragStart }: Types.IDragProps) {
   const componentRefs = React.useRef<HTMLDivElement>();
 
   const getComponentRefs = () => {
@@ -25,7 +25,7 @@ function Text({ componentKey, componentStyles, draggable, onDragStart }: Types.I
       draggable={draggable}
       onDragStart={onDrag}
     >
-      文本区域
+      {componentInnerText || '文本内容'}
     </div>
   );
 }

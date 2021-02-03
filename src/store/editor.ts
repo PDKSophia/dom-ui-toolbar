@@ -28,15 +28,15 @@ function useEditorStoreModel() {
     componentStyles?: React.CSSProperties
   ) => {
     const componentInstance = ComponentsList[componentName];
-    let prevStore = cloneDeep(editorComponentList);
-    prevStore.push({
+    let nextStore = cloneDeep(editorComponentList);
+    nextStore.push({
       componentId: createUUid(),
       componentName,
       componentInstance,
       componentInnerText,
       style: componentStyles
     });
-    setEditorComponentList(prevStore);
+    setEditorComponentList(nextStore);
   };
   /**
    * 清空画布，清除所有组件
@@ -46,10 +46,10 @@ function useEditorStoreModel() {
    * 画布内移动组件，动态修改坐标位置
    */
   const dispatchUpdateComponentPositionAction = (componentIndex: number, componentStyles?: React.CSSProperties) => {
-    const prevStore = cloneDeep(editorComponentList);
-    const moveComponent = { ...prevStore[componentIndex], style: { ...componentStyles } };
-    prevStore[componentIndex] = moveComponent;
-    setEditorComponentList(prevStore);
+    const nextStore = cloneDeep(editorComponentList);
+    const moveComponent = { ...nextStore[componentIndex], style: { ...componentStyles } };
+    nextStore[componentIndex] = moveComponent;
+    setEditorComponentList(nextStore);
   };
   /**
    * 选中当前组件，记录当前组件
@@ -59,7 +59,15 @@ function useEditorStoreModel() {
     setCurrentEditorComponent(editorComponentList[componentIndex]);
   };
   /**
-   * 释放当前选中的组件
+   * 从数组中删除组件
+   */
+  const dispatchDeleteComponentAction = (componentIndex: number) => {
+    let nextStore = cloneDeep(editorComponentList);
+    nextStore.splice(componentIndex, 1);
+    setEditorComponentList(nextStore);
+  };
+  /**
+   * 点击空白区域，释放当前组件
    */
   const dispatchClearCurrentComponentAction = () => {
     setCurrentEditorComponentIndex(-1);
@@ -76,6 +84,9 @@ function useEditorStoreModel() {
     setEditorComponentList(nextStore);
     setCurrentEditorComponent(updateComponent);
   };
+  /**
+   * 修改组件内容
+   */
   const dispatchUpdateComponentInnerTextAction = (innerText: string) => {
     const nextStore = cloneDeep(editorComponentList);
     const updateComponent = { ...nextStore[currentEditorComponentIndex], componentInnerText: innerText };
@@ -83,12 +94,14 @@ function useEditorStoreModel() {
     setEditorComponentList(nextStore);
     setCurrentEditorComponent(updateComponent);
   };
+
   return {
     editorComponentList,
     currentEditorComponentIndex,
     currentEditorComponent,
     dispatchAddComponentAction,
     dispatchClearTotalComponentAction,
+    dispatchDeleteComponentAction,
     dispatchClearCurrentComponentAction,
     dispatchUpdateComponentPositionAction,
     dispatchSetCurrentEditorComponentAction,

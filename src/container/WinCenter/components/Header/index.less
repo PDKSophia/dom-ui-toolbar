@@ -1,21 +1,29 @@
 .header {
   height: 60px;
   line-height: 60px;
+  padding: 0 24px;
   background: #ffffff;
   box-shadow: 0 4px 12px rgba(40, 120, 255, 0.11), 0 3px 14px rgba(0, 0, 0, 0.11);
-  .view {
-    margin-left: 24px;
-    font-size: 14px;
-    color: rgba(0, 0, 0, 0.6);
-    display: inline-block;
-    cursor: pointer;
-    :global {
-      .marginLeft {
-        margin-left: 8px;
-      }
+
+  .action {
+    float: right;
+    height: 60px;
+    padding-top: 14px;
+  }
+}
+
+.view {
+  margin-left: 16px;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
+  display: inline-block;
+  cursor: pointer;
+  :global {
+    .marginLeft {
+      margin-left: 8px;
     }
-    .phoneBtn {
-      border: 1px solid rgba(0, 0, 0, 0.07);
-    }
+  }
+  &:first-child {
+    margin-left: 0;
   }
 }

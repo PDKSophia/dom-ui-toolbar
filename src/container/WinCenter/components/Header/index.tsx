@@ -4,10 +4,11 @@ import { Switch, Menu, Dropdown, Button } from 'antd';
 import { PC_SIZE } from '@common/constant';
 import useEditorStoreModel from '@store/editor';
 import useScreenSizeModel from '@store/screenSize';
+import { DeleteTwoTone, HighlightTwoTone, CodeTwoTone, SaveTwoTone } from '@ant-design/icons';
 
 function Header() {
   const { selectPc, changeSelectPc } = useScreenSizeModel();
-  const { dispatchClearTotalComponentAction } = useEditorStoreModel();
+  const { currentEditorComponent, dispatchClearTotalComponentAction } = useEditorStoreModel();
 
   function renderMenu() {
     return (
@@ -33,11 +34,6 @@ function Header() {
         开启全屏
         <Switch size="small" checked={false} className="marginLeft" />
       </div>
-      <div styleName="view">
-        <Button styleName="phoneBtn" onClick={dispatchClearTotalComponentAction}>
-          清空画布
-        </Button>
-      </div>
       <div styleName="view" onClick={() => {}}>
         屏幕尺寸
         <Dropdown overlay={renderMenu} placement="bottomLeft" className="marginLeft" trigger={['click']}>
@@ -45,6 +41,33 @@ function Header() {
             {PC_SIZE[selectPc].WIDTH} * {PC_SIZE[selectPc].HEIGHT}
           </Button>
         </Dropdown>
+      </div>
+      <div styleName="action">
+        <div styleName="view">
+          <Button icon={<HighlightTwoTone twoToneColor="#52c41a" />} onClick={dispatchClearTotalComponentAction}>
+            清除画布
+          </Button>
+        </div>
+        <div styleName="view">
+          <Button icon={<CodeTwoTone twoToneColor="#52c41a" />} onClick={() => {}}>
+            撤回
+          </Button>
+        </div>
+        <div styleName="view">
+          <Button icon={<SaveTwoTone twoToneColor="#198fff" />} onClick={dispatchClearTotalComponentAction}>
+            保存
+          </Button>
+        </div>
+        <div styleName="view">
+          <Button
+            size="middle"
+            style={{ marginRight: 8 }}
+            icon={<DeleteTwoTone twoToneColor="#eb2f96" />}
+            onClick={() => {}}
+          >
+            删除
+          </Button>
+        </div>
       </div>
     </div>
   );

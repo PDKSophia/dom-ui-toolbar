@@ -41,7 +41,11 @@ function useEditorStoreModel() {
   /**
    * 清空画布，清除所有组件
    */
-  const dispatchClearTotalComponentAction = () => setEditorComponentList([]);
+  const dispatchClearTotalComponentAction = () => {
+    setEditorComponentList([])
+    setCurrentEditorComponentIndex(-1);
+    setCurrentEditorComponent(null);
+  };
   /**
    * 画布内移动组件，动态修改坐标位置
    */
